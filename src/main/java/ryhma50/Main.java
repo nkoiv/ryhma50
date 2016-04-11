@@ -1,10 +1,14 @@
 
 package ryhma50;
 
+import java.util.Scanner;
+
 public class Main {
 
     public static void main(String[] args) {
-        Kayttoliittyma kayttoliittyma = new Kayttoliittyma();
+        Scanner lukija = new Scanner(System.in);
+        Kayttoliittyma kayttoliittyma = new Kayttoliittyma(lukija);
+        
         kayttoliittyma.suorita();
     }
     

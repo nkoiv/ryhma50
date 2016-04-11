@@ -1,11 +1,41 @@
-<easyb time='Mon Apr 11 13:14:35 EEST 2016' totalbehaviors='1' totalfailedbehaviors='0' totalpendingbehaviors='1' executionTime='1411'>
-  <stories scenarios='1' failedscenarios='0' pendingscenarios='1' executionTime='1411'>
-    <story name='viitteiden lisays' scenarios='1' failedscenarios='0' pendingscenarios='1' executionTime='1411'>
+<easyb time='Mon Apr 11 15:06:11 EEST 2016' totalbehaviors='1' totalfailedbehaviors='1' totalpendingbehaviors='0' executionTime='1271'>
+  <stories scenarios='1' failedscenarios='1' pendingscenarios='0' executionTime='1271'>
+    <story name='viitteiden lisays' scenarios='1' failedscenarios='1' pendingscenarios='0' executionTime='1271'>
       <description name='Käyttäjä voi lisätä viitteen' />
-      <scenario name='käyttäjä voi lisätä viitteen' result='pending' executionTime='60'>
+      <scenario name='käyttäjä voi lisätä viitteen' result='failure' executionTime='141'>
         <given name='ohjelma käynnistetään ja valitaan viitetyyppi' result='success' />
-        <when name='viitteen tiedot annetaan' result='success' />
-        <then name='ohjelma ei kaadu' result='pending' />
+        <when name='viitteen tiedot annetaan' result='failure'>
+          <failure message='No line found'>
+            <stacktrace>ryhma50.Kayttoliittyma.suorita(Kayttoliittyma.java:18)
+ryhma50.Kayttoliittyma$suorita.call(Unknown Source)
+org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:120)
+viitteidenLisays$_run_closure1_closure3.doCall(viitteidenLisays.story:15)
+sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.lang.reflect.Method.invoke(Method.java:483)
+...
+</stacktrace>
+          </failure>
+        </when>
+        <then name='ohjelma ei kaadu' result='failure'>
+          <failure message='No line found'>
+            <stacktrace>ryhma50.Kayttoliittyma.suoritaKirja(Kayttoliittyma.java:34)
+ryhma50.Kayttoliittyma$suoritaKirja.call(Unknown Source)
+org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:120)
+viitteidenLisays$_run_closure1_closure4.doCall(viitteidenLisays.story:19)
+sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+java.lang.reflect.Method.invoke(Method.java:483)
+...
+</stacktrace>
+          </failure>
+        </then>
       </scenario>
     </story>
   </stories>

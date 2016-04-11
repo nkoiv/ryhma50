@@ -6,8 +6,8 @@ import java.util.Scanner;
 public class Kayttoliittyma {
     private Scanner lukija;
     
-    public Kayttoliittyma() {
-        this.lukija = new Scanner(System.in);
+    public Kayttoliittyma(Scanner lukija) {
+        this.lukija = lukija;
     }
     
     public void suorita() {
@@ -29,7 +29,7 @@ public class Kayttoliittyma {
         System.out.println("1 kirja");
     }
     
-    public void suoritaKirja() {
+    public boolean suoritaKirja() {
         System.out.println("Anna kirjan kirjoittajat:");
         String kirjoittajat = this.lukija.nextLine();
         System.out.println("Anna kirjan nimi:");
@@ -39,5 +39,10 @@ public class Kayttoliittyma {
         System.out.println("Anna kirjan julkaisija:");
         String julkaisija = this.lukija.nextLine();
         System.out.println("Viite lisätty!\n");
+        return true;
+    }
+    
+    public boolean onnistunutSuoritus() {
+        return true;
     }
 }

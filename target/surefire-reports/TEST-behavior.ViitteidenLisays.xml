@@ -1,5 +1,10 @@
-<testsuite tests='1' results='0' failures='0' disabled='1' errors='0' time='1.411' name='behavior.viitteidenLisays'>
-  <testcase classname='behavior.viitteidenLisays' name='käyttäjä voi lisätä viitteen' time='0.06'>
-    <skipped />
+<testsuite tests='1' results='0' failures='1' disabled='0' errors='0' time='1.271' name='behavior.viitteidenLisays'>
+  <testcase classname='behavior.viitteidenLisays' name='käyttäjä voi lisätä viitteen' time='0.141'>
+    <failure message='Step "viitteen tiedot annetaan" -- No line found; Step "ohjelma ei kaadu" -- No line found'>Step "viitteen tiedot annetaan" -- No line found; Step "ohjelma ei kaadu" -- No line found
+
+    scenario käyttäjä voi lisätä viitteen
+      given ohjelma käynnistetään ja valitaan viitetyyppi
+      when viitteen tiedot annetaan
+      then ohjelma ei kaadu</failure>
   </testcase>
 </testsuite>

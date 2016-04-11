@@ -67,9 +67,9 @@
             <tbody>
               <tr class='primaryRow'>
                 <td>1</td>
+                <td class='stepResultFailed'>1</td>
                 <td class=''>0</td>
-                <td class='stepResultPending'>1</td>
-                <td>1.411</td>
+                <td>1.271</td>
               </tr>
             </tbody>
           </table>
@@ -88,9 +88,9 @@
               <tr class='primaryRow'>
                 <td>1</td>
                 <td>1</td>
+                <td class='stepResultFailed'>1</td>
                 <td class=''>0</td>
-                <td class='stepResultPending'>1</td>
-                <td>1.411</td>
+                <td>1.271</td>
               </tr>
             </tbody>
           </table>
@@ -137,9 +137,9 @@
          
         </td>
         <td>1</td>
+        <td class='stepResultFailed'>1</td>
         <td class=''>0</td>
-        <td class='stepResultPending'>1</td>
-        <td>1.411</td>
+        <td>1.271</td>
       </tr>
 
        
@@ -150,8 +150,8 @@
               
               <tr class='primaryScenarioRow'>
                 <td title='Scenario'>käyttäjä voi lisätä viitteen</td>
-                <td title='Result' class='stepResultPending'>pending</td>
-                <td title='Time (sec)'>0.06</td>
+                <td title='Result' class='stepResultFailed'>failure</td>
+                <td title='Time (sec)'>0.141</td>
               </tr>
               
               <tr class='scenarioComponents'>
@@ -163,15 +163,73 @@
               
               <tr class='scenarioComponents'>
                 <td>when viitteen tiedot annetaan</td>
-                <td class='stepResultSuccess'>success</td>
+                <td class='stepResultFailed'>failure</td>
                 <td />
+              </tr>
+              
+              <tr>
+                <td colspan='3' style='color:red; padding-left: 1cm;'>
+                  
+                  <strong>java.util.NoSuchElementException: No line found</strong>
+                  
+                  <br />ryhma50.Kayttoliittyma.suorita(Kayttoliittyma.java:18)
+                  
+                  <br />ryhma50.Kayttoliittyma$suorita.call(Unknown Source)
+                  
+                  <br />org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+                  
+                  <br />org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+                  
+                  <br />org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:120)
+                  
+                  <br />viitteidenLisays$_run_closure1_closure3.doCall(viitteidenLisays.story:15)
+                  
+                  <br />sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+                  
+                  <br />sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+                  
+                  <br />sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+                  
+                  <br />java.lang.reflect.Method.invoke(Method.java:483)
+                  
+                  <br />
+                </td>
               </tr>
               
               
               <tr class='scenarioComponents'>
                 <td>then ohjelma ei kaadu</td>
-                <td class='stepResultPending'>pending</td>
+                <td class='stepResultFailed'>failure</td>
                 <td />
+              </tr>
+              
+              <tr>
+                <td colspan='3' style='color:red; padding-left: 1cm;'>
+                  
+                  <strong>java.util.NoSuchElementException: No line found</strong>
+                  
+                  <br />ryhma50.Kayttoliittyma.suoritaKirja(Kayttoliittyma.java:34)
+                  
+                  <br />ryhma50.Kayttoliittyma$suoritaKirja.call(Unknown Source)
+                  
+                  <br />org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:40)
+                  
+                  <br />org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:116)
+                  
+                  <br />org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:120)
+                  
+                  <br />viitteidenLisays$_run_closure1_closure4.doCall(viitteidenLisays.story:19)
+                  
+                  <br />sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+                  
+                  <br />sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+                  
+                  <br />sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+                  
+                  <br />java.lang.reflect.Method.invoke(Method.java:483)
+                  
+                  <br />
+                </td>
               </tr>
               
               
@@ -192,8 +250,8 @@
 <div id='StoriesListPlain' style='display:none;'>
   <h2>Stories Text</h2>
   
-  <div>1 scenario (including 1 pending) executed successfully.</div>
-  <div><br/><br/>&nbsp;&nbsp;Story: viitteiden lisays<br/><br/>&nbsp;&nbsp;&nbsp;Käyttäjä voi lisätä viitteen<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario käyttäjä voi lisätä viitteen<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given ohjelma käynnistetään ja valitaan viitetyyppi<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when viitteen tiedot annetaan<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then ohjelma ei kaadu&nbsp;<span style='color:#BABFEE;'>[PENDING]</span></div>
+  <div>1 scenario executed, but status is failure! Total failures: 1</div>
+  <div><br/><br/>&nbsp;&nbsp;Story: viitteiden lisays<br/><br/>&nbsp;&nbsp;&nbsp;Käyttäjä voi lisätä viitteen<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario käyttäjä voi lisätä viitteen<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given ohjelma käynnistetään ja valitaan viitetyyppi<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when viitteen tiedot annetaan&nbsp;<span style='color:#FF8080;'>[FAILURE: No line found]</span><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then ohjelma ei kaadu&nbsp;<span style='color:#FF8080;'>[FAILURE: No line found]</span></div>
 </div>
 
       </div>
