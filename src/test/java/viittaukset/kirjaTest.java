@@ -76,7 +76,6 @@ public class kirjaTest {
         assertEquals("Väärä publisher", PUBLISHERTARGET, dataOutput.get(PUBLISHER));
         assertEquals("Väärä author", AUTHORTARGET, dataOutput.get(AUTHOR));
         assertEquals("Ylimääräistä tavaraa", null, dataOutput.get("ylimääräistä"));
-        
        
     }
     
