@@ -1,5 +1,5 @@
 
-package reseptikone.ryhma50;
+package ryhma50.ryhma50;
 
 public class Main {
 
