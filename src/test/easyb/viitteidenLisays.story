@@ -1,4 +1,5 @@
 import ryhma50.*
+import viittaukset.*
 
 description 'Käyttäjä voi lisätä viitteen'
 

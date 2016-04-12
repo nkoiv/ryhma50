@@ -1,4 +1,4 @@
-package ryhma50.ryhma50;
+package ryhma50;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
