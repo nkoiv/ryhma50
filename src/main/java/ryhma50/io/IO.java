@@ -10,5 +10,5 @@ public interface IO {
 
     int readInt(String prompt);
 
-    String readString(String prompt);
+    String readLine(String prompt);
 }

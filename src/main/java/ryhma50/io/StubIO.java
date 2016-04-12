@@ -1,24 +1,44 @@
 package ryhma50.io;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author marko
  */
 public class StubIO implements IO {
 
+    private String[] lines;
+    private int i;
+    private ArrayList<String> prints;
+
+    public StubIO(String... values) {
+        this.lines = values;
+        prints = new ArrayList<>();
+    }
+
     @Override
     public void print(String toPrint) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        prints.add(toPrint);
     }
 
     @Override
     public int readInt(String prompt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        print(prompt);
+        return Integer.parseInt(lines[i++]);
     }
 
     @Override
-    public String readString(String prompt) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String readLine(String prompt) {
+        print(prompt);
+        if (i < lines.length) {
+            return lines[i++];
+        }
+        return "";
+    }
+
+    public ArrayList<String> getPrints() {
+        return prints;
     }
 
 }

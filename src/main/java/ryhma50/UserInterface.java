@@ -20,7 +20,7 @@ public class UserInterface {
     public void run() {
         printHelp();
         while (true) {
-            String command = io.readString(">");
+            String command = io.readLine(">");
             if (command.isEmpty()) {
                 io.print("Until we meet again");
                 break;
@@ -41,7 +41,7 @@ public class UserInterface {
     }
 
     private void runCommand(String command) {
-        String entryType = io.readString("Write entry type: ");
+        String entryType = io.readLine("Write entry type: ");
         if (!validateEntryType(entryType)) {
             System.out.println("Invalid entry type");
         } else if (command.equalsIgnoreCase("add")) {

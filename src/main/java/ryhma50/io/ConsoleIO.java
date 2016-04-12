@@ -22,7 +22,7 @@ public class ConsoleIO implements IO {
     }
 
     @Override
-    public String readString(String prompt) {
+    public String readLine(String prompt) {
         System.out.print(prompt + " ");
         return scanner.nextLine();
     }
