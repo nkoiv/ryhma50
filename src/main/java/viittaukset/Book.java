@@ -7,10 +7,10 @@ import java.util.HashMap;
  *
  * @author Studies
  */
-public class Kirja extends Viittaus {
+public class Book extends EntryType {
     private final String PUBLISHER = "publisher";
 
-    public Kirja() {
+    public Book() {
         super();
         super.latexFields.put("publisher","");
     }

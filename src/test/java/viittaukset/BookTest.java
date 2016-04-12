@@ -19,8 +19,8 @@ import static org.junit.Assert.*;
  *
  * @author ola
  */
-public class kirjaTest {
-    private Viittaus book;
+public class BookTest {
+    private EntryType book;
     private final String TITLE = "title";
     private final String YEAR = "year";
     private final String AUTHOR = "author";
@@ -30,7 +30,7 @@ public class kirjaTest {
     private final String AUTHORTARGET = "loladin";
     private final String PUBLISHERTARGET = "Iso B";
     
-    public kirjaTest() {
+    public BookTest() {
     }
     
     @BeforeClass
@@ -43,7 +43,7 @@ public class kirjaTest {
     
     @Before
     public void setUp() {
-        book = new Kirja();
+        book = new Book();
     }
     
     @After

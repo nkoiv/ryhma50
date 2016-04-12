@@ -7,13 +7,13 @@ import java.util.*;
  *
  * @author Studies
  */
-public abstract class Viittaus {
+public abstract class EntryType {
     protected final HashMap<String, String> latexFields;
     protected final String TITLE = "title";
     protected final String AUTHOR = "author";
     protected final String YEAR= "year";
     
-    public Viittaus() {
+    public EntryType() {
         this.latexFields = new HashMap<>();
         this.latexFields.put(TITLE, "");
         this.latexFields.put(AUTHOR, "");

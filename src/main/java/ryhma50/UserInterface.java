@@ -8,11 +8,11 @@ import ryhma50.io.IO;
  *
  * @author marko
  */
-public class Kayttoliittyma {
+public class UserInterface {
 
     private IO io;
 
-    public Kayttoliittyma() {
+    public UserInterface() {
 
         io = new ConsoleIO();
     }
