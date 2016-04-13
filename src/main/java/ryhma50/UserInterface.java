@@ -12,9 +12,9 @@ public class UserInterface {
 
     private IO io;
 
-    public UserInterface() {
+    public UserInterface(IO io) {
 
-        io = new ConsoleIO();
+        this.io = io;
     }
 
     public void run() {
@@ -25,7 +25,7 @@ public class UserInterface {
                 io.print("Until we meet again");
                 break;
             } else if (!validateCommand(command)) {
-                System.out.println("Invalid command type");
+                io.print("Invalid command type");
                 continue;
             } else {
                 runCommand(command);
@@ -43,7 +43,7 @@ public class UserInterface {
     private void runCommand(String command) {
         String entryType = io.readLine("Write entry type: ");
         if (!validateEntryType(entryType)) {
-            System.out.println("Invalid entry type");
+            io.print("Invalid entry type");
         } else if (command.equalsIgnoreCase("add")) {
             runCommandAdd(entryType);
         } else {
