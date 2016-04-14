@@ -3,17 +3,18 @@ import ryhma50.io.*
 
 description 'User can use app to add new reference'
 
-scenario 'user can use add command', {
-    given 'app runs',{
-        io = new StubIO("add", "book")
+
+scenario 'user can add a book', {
+    given 'app runs and command add is selected' {
+        io = new StubIO("add", "book", "vilma ja sara", "paras kirja", "kumpulan kampus", "2016", "", "", "", "", "", "", "")
         ui = new UserInterface(io)
     }
 
-    when 'add command is typed with correct information', {
+    when 'books information is given correctly', {
         ui.run()
     }
 
-    then 'entry is added to file', {
+    then 'book-entry is added', {
         io.getPrints().shouldHave("New entry added")
     }
 }

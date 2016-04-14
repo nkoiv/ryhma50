@@ -1,6 +1,8 @@
 package ryhma50;
 
+import java.util.HashMap;
 import java.util.Scanner;
+import references.Book;
 import ryhma50.io.ConsoleIO;
 import ryhma50.io.IO;
 
@@ -34,10 +36,11 @@ public class UserInterface {
     }
 
     private void printHelp() {
-        System.out.println("First choose command by typing 'add' or 'get' \n"
-                + "Then choose entry type by typing 'article', 'book' \n"
-                + "After that add-command will ask you to fill field types \n"
-                + "and get will print all the references");
+        System.out.println("First choose a command by typing 'add' or 'get' \n"
+                + "Then choose an entry type by typing 'article', 'book' \n"
+                + "Add-command will ask you to fill field types \n"
+                + "and 'get' will print all the references.\n"
+                + "Type nothing and press enter to exit.");
     }
 
     private void runCommand(String command) {
@@ -54,6 +57,7 @@ public class UserInterface {
     private void runCommandAdd(String entryType) {
         if (entryType.equalsIgnoreCase("book")) {
             //ask field types and write them to book file
+            addBook();
         } else {
             //ask field types and write them to article file
         }
@@ -75,4 +79,35 @@ public class UserInterface {
     private boolean validateEntryType(String entryType) {
         return entryType.equalsIgnoreCase("book") || entryType.equalsIgnoreCase("article");
     }
+
+    private void addBook() {
+        Book book = new Book();
+        HashMap<String, String> fields = new HashMap<String, String>();
+
+        io.print("Give us the information about the book.");
+
+        for (String header : book.necessaryFields()) {
+            String answer = io.readLine(header + "?");
+            if (answer.isEmpty()) {
+                io.print("You must fill this field!");
+                answer = io.readLine(header + "?");
+                if (answer.isEmpty()) {
+                    // OHJELMAN TULISI KESKEYTYÄ TAI VIRHETILANNE PITÄISI MUUTEN SAADA HOIDETTUA
+                }
+            }
+            fields.put(header.toString(), answer);
+        }
+
+        io.print("Following fields are optional.");
+        
+        for (Object header : book.returnHeaders()) {
+            if (!book.necessaryFields().contains(header.toString())) {
+                String answer = io.readLine(header.toString() + "?");
+                fields.put(header.toString(), answer);
+            }
+        }
+
+        book.saveAll(fields);
+    }
+
 }

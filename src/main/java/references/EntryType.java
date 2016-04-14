@@ -1,5 +1,5 @@
 
-package viittaukset;
+package references;
 
 import java.util.*;
 
@@ -10,13 +10,13 @@ import java.util.*;
 public abstract class EntryType {
     protected final HashMap<String, String> latexFields;
     protected final String TITLE = "title";
-    protected final String AUTHOR = "author";
+    protected final String AUTHORS = "authors";
     protected final String YEAR= "year";
     
     public EntryType() {
         this.latexFields = new HashMap<>();
         this.latexFields.put(TITLE, "");
-        this.latexFields.put(AUTHOR, "");
+        this.latexFields.put(AUTHORS, "");
         this.latexFields.put(YEAR, "");
     }
     
@@ -30,8 +30,11 @@ public abstract class EntryType {
     
     public void saveAll(HashMap<String, String> fields) {
         this.latexFields.put(TITLE, fields.get(TITLE));
-        this.latexFields.put(AUTHOR, fields.get(AUTHOR));
+        this.latexFields.put(AUTHORS, fields.get(AUTHORS));
         this.latexFields.put(YEAR, fields.get(YEAR));
     }
     
+    public void writeToAFile() { // tarvii toteutuksen
+        
+    }
 }
