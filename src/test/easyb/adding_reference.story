@@ -5,7 +5,7 @@ description 'User can use app to add new reference'
 
 
 scenario 'user can add a book', {
-    given 'app runs and command add is selected' {
+    given 'app runs and command add is selected', {
         io = new StubIO("add", "book", "vilma ja sara", "paras kirja", "kumpulan kampus", "2016", "", "", "", "", "", "", "")
         ui = new UserInterface(io)
     }
