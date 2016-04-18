@@ -4,3 +4,5 @@
 [User storyja](https://docs.google.com/document/d/1Hcfs2dEpAOPRS699CDqL5iQoODS68RMpF2F8g4845x4/edit?usp=sharing)
 
 [![Build Status](https://travis-ci.org/Shyles/ryhma50.svg?branch=master)](https://travis-ci.org/Shyles/ryhma50)
+
+[![Coverage Status](https://coveralls.io/repos/github/Shyles/ryhma50/badge.svg?branch=master)](https://coveralls.io/github/Shyles/ryhma50?branch=master)
