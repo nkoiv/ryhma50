@@ -56,9 +56,6 @@ public abstract class EntryType {
         this.latexFields.put(YEAR, fields.get(YEAR));
     }
 
-    public void writeToAFile() { // tarvii toteutuksen
-    }
-
     protected void addFieldsToArrayList(ArrayList<String> fields, String... headers) {
         for (String header : headers) {
             fields.add(header);
