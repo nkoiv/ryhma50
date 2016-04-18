@@ -1,9 +1,7 @@
 package ryhma50;
 
 import java.util.HashMap;
-import java.util.Scanner;
 import references.Book;
-import ryhma50.io.ConsoleIO;
 import ryhma50.io.IO;
 
 /**
