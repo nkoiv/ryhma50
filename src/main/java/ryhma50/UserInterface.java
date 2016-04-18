@@ -88,12 +88,9 @@ public class UserInterface {
 
         for (String header : book.necessaryFields()) {
             String answer = io.readLine(header + "?");
-            if (answer.isEmpty()) {
+            while (answer.isEmpty()) {
                 io.print("You must fill this field!");
                 answer = io.readLine(header + "?");
-                if (answer.isEmpty()) {
-                    // OHJELMAN TULISI KESKEYTYÄ TAI VIRHETILANNE PITÄISI MUUTEN SAADA HOIDETTUA
-                }
             }
             fields.put(header.toString(), answer);
         }
