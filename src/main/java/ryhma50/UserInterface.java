@@ -86,7 +86,7 @@ public class UserInterface {
 
         io.print("Give us the information about the book.");
 
-        for (String header : book.necessaryFields()) {
+        for (String header : book.returnNecessaryHeaders()) {
             String answer = io.readLine(header + "?");
             while (answer.isEmpty()) {
                 io.print("You must fill this field!");
@@ -97,11 +97,9 @@ public class UserInterface {
 
         io.print("Following fields are optional.");
         
-        for (Object header : book.returnHeaders()) {
-            if (!book.necessaryFields().contains(header.toString())) {
+        for (Object header : book.returnOptionalHeaders()) {
                 String answer = io.readLine(header.toString() + "?");
                 fields.put(header.toString(), answer);
-            }
         }
 
         book.saveAll(fields);

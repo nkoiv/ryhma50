@@ -54,12 +54,12 @@ public class BookTest {
     
     @Test
     public void hasCorrectHeaders() {
-        assertTrue("Does't contain correct headers", (book.returnHeaders().contains(TITLE) ||
-        book.returnHeaders().contains(AUTHORS)) ||
-        book.returnHeaders().contains(PUBLISHER) ||
-        book.returnHeaders().contains(YEAR));
+        assertTrue("Does't contain correct headers", (book.returnAllHeaders().contains(TITLE) ||
+        book.returnAllHeaders().contains(AUTHORS)) ||
+        book.returnAllHeaders().contains(PUBLISHER) ||
+        book.returnAllHeaders().contains(YEAR));
         
-        assertEquals("Additional headers", book.returnHeaders().size(), 11);
+        assertEquals("Additional headers", book.returnAllHeaders().size(), 11);
         
     }
     

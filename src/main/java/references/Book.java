@@ -15,36 +15,13 @@ import java.util.logging.Logger;
  *
  * @author Studies
  */
-public class Book extends EntryType implements Serializable {
+public class Book extends EntryType {
 
-    private final String PUBLISHER = "publisher";
-    private final String VOLUME = "volume/number";
-    private final String SERIES = "series";
-    private final String ADDRESS = "address";
-    private final String EDITION = "edition";
-    private final String MONTH = "month";
-    private final String NOTE = "note";
-    private final String KEY = "key";
 
     public Book() {
         super();
-        super.latexFields.put("publisher", "");
-        super.latexFields.put("volume/number", "");
-        super.latexFields.put("series", "");
-        super.latexFields.put("address", "");
-        super.latexFields.put("edition", "");
-        super.latexFields.put("month", "");
-        super.latexFields.put("note", "");
-        super.latexFields.put("key", "");
-    }
-
-    public ArrayList<String> necessaryFields() {
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("authors");
-        list.add("title");
-        list.add("publisher");
-        list.add("year");
-        return list;
+        addFieldsToArrayList(necessaryHeaders, PUBLISHER);
+        addFieldsToArrayList(optionalHeaders, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY);
     }
 
     @Override
@@ -61,8 +38,8 @@ public class Book extends EntryType implements Serializable {
     }
 
     @Override
-    public Set returnHeaders() {
-        return super.returnHeaders();
+    public Set returnAllHeaders() {
+        return super.returnAllHeaders();
     }
 
     public void printFields() { // testataan, tallentuiko tiedot kirjaan
