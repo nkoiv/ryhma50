@@ -20,25 +20,25 @@ public class Book extends EntryType {
 
     public Book() {
         super();
-        addFieldsToHashMap(necessaryHeaders, PUBLISHER);
-        addFieldsToHashMap(optionalHeaders, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY);
+        addFieldsToArrayList(necessaryHeaders, PUBLISHER);
+        addFieldsToArrayList(optionalHeaders, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY);
     }
 
-    public Set<String> necessaryFields() {
-        return necessaryHeaders.keySet();
+    public ArrayList<String> necessaryFields() {
+        return necessaryHeaders;
     }
 
     @Override
     public void saveAll(HashMap<String, String> fields) {
         super.saveAll(fields);
-        super.allHeaders.put(PUBLISHER, fields.get(PUBLISHER));
-        super.allHeaders.put(VOLUME, fields.get(VOLUME));
-        super.allHeaders.put(SERIES, fields.get(SERIES));
-        super.allHeaders.put(ADDRESS, fields.get(ADDRESS));
-        super.allHeaders.put(EDITION, fields.get(EDITION));
-        super.allHeaders.put(MONTH, fields.get(MONTH));
-        super.allHeaders.put(NOTE, fields.get(NOTE));
-        super.allHeaders.put(KEY, fields.get(KEY));
+        super.latexFields.put(PUBLISHER, fields.get(PUBLISHER));
+        super.latexFields.put(VOLUME, fields.get(VOLUME));
+        super.latexFields.put(SERIES, fields.get(SERIES));
+        super.latexFields.put(ADDRESS, fields.get(ADDRESS));
+        super.latexFields.put(EDITION, fields.get(EDITION));
+        super.latexFields.put(MONTH, fields.get(MONTH));
+        super.latexFields.put(NOTE, fields.get(NOTE));
+        super.latexFields.put(KEY, fields.get(KEY));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class Book extends EntryType {
     }
 
     public void printFields() { // testataan, tallentuiko tiedot kirjaan
-        for (Object field : super.allHeaders.values()) {
+        for (Object field : super.latexFields.values()) {
             System.out.println(field.toString());
         }
     }

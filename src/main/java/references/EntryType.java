@@ -8,9 +8,9 @@ import java.util.*;
  */
 public abstract class EntryType {
 
-    protected final HashMap<String, String> allHeaders;
-    protected final HashMap<String, String> necessaryHeaders;
-    protected final HashMap<String, String> optionalHeaders;
+    protected final HashMap<String, String> latexFields;
+    protected final ArrayList<String> necessaryHeaders;
+    protected final ArrayList<String> optionalHeaders;
     protected final String TITLE = "title";
     protected final String AUTHORS = "authors";
     protected final String YEAR = "year";
@@ -24,41 +24,51 @@ public abstract class EntryType {
     protected final String KEY = "key";
 
     public EntryType() {
-        this.allHeaders = new HashMap<>();
-        addFieldsToHashMap(allHeaders, TITLE, AUTHORS, YEAR, PUBLISHER, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY);
-        this.necessaryHeaders = new HashMap<>();
-        addFieldsToHashMap(necessaryHeaders, TITLE, AUTHORS, YEAR);
-        this.optionalHeaders = new HashMap<>();
+        this.latexFields = new HashMap<>();
+        addFieldsToHashMap(latexFields, TITLE, AUTHORS, YEAR, PUBLISHER, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY);
+        this.necessaryHeaders = new ArrayList<>();
+        addFieldsToArrayList(necessaryHeaders, TITLE, AUTHORS, YEAR);
+        this.optionalHeaders = new ArrayList<>();
     }
 
     public Map returnFields() {
-        return this.allHeaders;
+        return this.latexFields;
     }
 
     public Set returnAllHeaders() {
-        return this.allHeaders.keySet();
+        return this.latexFields.keySet();
     }
-    
-    public Set returnNecessaryHeaders() {
-        return this.necessaryHeaders.keySet();
+
+    public ArrayList<String> returnNecessaryHeaders() {
+        return this.necessaryHeaders;
     }
-    
-    public Set returnOptionalHeaders() {
-        return this.optionalHeaders.keySet();
+
+    public ArrayList<String> returnOptionalHeaders() {
+        return this.optionalHeaders;
     }
 
     public void saveAll(HashMap<String, String> fields) {
-        this.allHeaders.put(TITLE, fields.get(TITLE));
-        this.allHeaders.put(AUTHORS, fields.get(AUTHORS));
-        this.allHeaders.put(YEAR, fields.get(YEAR));
+//        for (String header : nec) {
+//
+//        }
+        this.latexFields.put(TITLE, fields.get(TITLE));
+        this.latexFields.put(AUTHORS, fields.get(AUTHORS));
+        this.latexFields.put(YEAR, fields.get(YEAR));
     }
 
     public void writeToAFile() { // tarvii toteutuksen
     }
-    
+
+    protected void addFieldsToArrayList(ArrayList<String> fields, String... headers) {
+        for (String header : headers) {
+            fields.add(header);
+        }
+    }
+
     protected void addFieldsToHashMap(HashMap<String, String> fields, String... headers) {
         for (String header : headers) {
             fields.put(header, "");
         }
     }
+
 }
