@@ -100,11 +100,9 @@ public class UserInterface {
 
         io.print("Following fields are optional.");
         
-        for (Object header : book.returnHeaders()) {
-            if (!book.necessaryFields().contains(header.toString())) {
+        for (Object header : book.returnOptionalHeaders()) {
                 String answer = io.readLine(header.toString() + "?");
                 fields.put(header.toString(), answer);
-            }
         }
 
         book.saveAll(fields);

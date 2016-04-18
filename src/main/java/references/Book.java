@@ -15,58 +15,39 @@ import java.util.logging.Logger;
  *
  * @author Studies
  */
-public class Book extends EntryType implements Serializable {
+public class Book extends EntryType {
 
-    private final String PUBLISHER = "publisher";
-    private final String VOLUME = "volume/number";
-    private final String SERIES = "series";
-    private final String ADDRESS = "address";
-    private final String EDITION = "edition";
-    private final String MONTH = "month";
-    private final String NOTE = "note";
-    private final String KEY = "key";
 
     public Book() {
         super();
-        super.latexFields.put("publisher", "");
-        super.latexFields.put("volume/number", "");
-        super.latexFields.put("series", "");
-        super.latexFields.put("address", "");
-        super.latexFields.put("edition", "");
-        super.latexFields.put("month", "");
-        super.latexFields.put("note", "");
-        super.latexFields.put("key", "");
+        addFieldsToHashMap(necessaryHeaders, PUBLISHER);
+        addFieldsToHashMap(optionalHeaders, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY);
     }
 
-    public ArrayList<String> necessaryFields() {
-        ArrayList<String> list = new ArrayList<String>();
-        list.add("authors");
-        list.add("title");
-        list.add("publisher");
-        list.add("year");
-        return list;
+    public Set<String> necessaryFields() {
+        return necessaryHeaders.keySet();
     }
 
     @Override
     public void saveAll(HashMap<String, String> fields) {
         super.saveAll(fields);
-        super.latexFields.put(PUBLISHER, fields.get(PUBLISHER));
-        super.latexFields.put(VOLUME, fields.get(VOLUME));
-        super.latexFields.put(SERIES, fields.get(SERIES));
-        super.latexFields.put(ADDRESS, fields.get(ADDRESS));
-        super.latexFields.put(EDITION, fields.get(EDITION));
-        super.latexFields.put(MONTH, fields.get(MONTH));
-        super.latexFields.put(NOTE, fields.get(NOTE));
-        super.latexFields.put(KEY, fields.get(KEY));
+        super.allHeaders.put(PUBLISHER, fields.get(PUBLISHER));
+        super.allHeaders.put(VOLUME, fields.get(VOLUME));
+        super.allHeaders.put(SERIES, fields.get(SERIES));
+        super.allHeaders.put(ADDRESS, fields.get(ADDRESS));
+        super.allHeaders.put(EDITION, fields.get(EDITION));
+        super.allHeaders.put(MONTH, fields.get(MONTH));
+        super.allHeaders.put(NOTE, fields.get(NOTE));
+        super.allHeaders.put(KEY, fields.get(KEY));
     }
 
     @Override
-    public Set returnHeaders() {
-        return super.returnHeaders();
+    public Set returnAllHeaders() {
+        return super.returnAllHeaders();
     }
 
     public void printFields() { // testataan, tallentuiko tiedot kirjaan
-        for (Object field : super.latexFields.values()) {
+        for (Object field : super.allHeaders.values()) {
             System.out.println(field.toString());
         }
     }
