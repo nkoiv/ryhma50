@@ -6,6 +6,7 @@ package viittaukset;
  * and open the template in the editor.
  */
 
+import java.util.ArrayList;
 import references.Book;
 import references.EntryType;
 import java.util.HashMap;
@@ -85,10 +86,23 @@ public class BookTest {
     public void lol2() {
         
     }
+    
+    @Test
+    public void methodReturnNecessaryHeadersWorks() {
+        assertTrue(book.returnNecessaryHeaders().contains("authors"));
+        assertTrue(book.returnNecessaryHeaders().contains("title"));
+        assertTrue(book.returnNecessaryHeaders().contains("year"));
+        assertTrue(book.returnNecessaryHeaders().contains("publisher"));
+    }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    @Test
+    public void methodReturnsOptionalHeadersWorks() {
+        assertTrue(book.returnOptionalHeaders().contains("volume/number"));
+        assertTrue(book.returnOptionalHeaders().contains("series"));
+        assertTrue(book.returnOptionalHeaders().contains("address"));
+        assertTrue(book.returnOptionalHeaders().contains("edition"));
+        assertTrue(book.returnOptionalHeaders().contains("month"));
+        assertTrue(book.returnOptionalHeaders().contains("note"));
+        assertTrue(book.returnOptionalHeaders().contains("key"));
+    }
 }
