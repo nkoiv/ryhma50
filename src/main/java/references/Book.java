@@ -24,10 +24,6 @@ public class Book extends EntryType {
         addFieldsToArrayList(optionalHeaders, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY);
     }
 
-    public ArrayList<String> necessaryFields() {
-        return necessaryHeaders;
-    }
-
     @Override
     public void saveAll(HashMap<String, String> fields) {
         super.saveAll(fields);

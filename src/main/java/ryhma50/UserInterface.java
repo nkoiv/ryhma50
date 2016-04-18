@@ -86,7 +86,7 @@ public class UserInterface {
 
         io.print("Give us the information about the book.");
 
-        for (String header : book.necessaryFields()) {
+        for (String header : book.returnNecessaryHeaders()) {
             String answer = io.readLine(header + "?");
             if (answer.isEmpty()) {
                 io.print("You must fill this field!");
