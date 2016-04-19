@@ -6,20 +6,20 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import ryhma50.WriteFile;
+import ryhma50.data_access.DAO;
+import ryhma50.data_access.FileDAO;
+import ryhma50.data_access.StubDAO;
 
 /**
  *
  * @author marko
  */
-public class WriteFileTest {
+public class FileDAOTest {
 
-    private String fileName = "src/test/resources/write_file_test.txt";
     private HashMap<String, String> fields = new HashMap<>();
-    private WriteFile writer;
+    private StubDAO dao;
 
-    public WriteFileTest() {
-
+    public FileDAOTest() {
     }
 
     @BeforeClass
@@ -37,23 +37,30 @@ public class WriteFileTest {
         fields.put("publisher", "yolo");
         fields.put("year", "2016");
         fields.put("key", "");
-        writer = new WriteFile(fileName, fields);
+        dao = new StubDAO();
     }
 
     @After
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
     @Test
     public void testWritingBookReference() {
-        writer.add();
+        dao.add("book", fields);
     }
 
     @Test
-    public void testConstructorCatch() throws Exception {
-    
+    public void testWritingReferenceWithWrongType() {
+        dao.add("eer", fields);
+    }
+
+    @Test
+    public void testWritingBookReferenceWithEmptyField() {
+        dao.add("book", new HashMap<String, String>());
+    }
+
+    @Test
+    public void testWritingBookReferenceWithNullField() {
+        dao.add("book", null);
     }
 }

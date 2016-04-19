@@ -2,6 +2,8 @@ package ryhma50;
 
 import java.util.HashMap;
 import references.Book;
+import ryhma50.data_access.DAO;
+import ryhma50.data_access.FileDAO;
 import ryhma50.io.IO;
 
 /**
@@ -11,11 +13,11 @@ import ryhma50.io.IO;
 public class UserInterface {
 
     private IO io;
-    private WriteFile writer;
+    private DAO dao;
 
     public UserInterface(IO io) {
-
         this.io = io;
+        this.dao = new FileDAO();
     }
 
     public void run() {
@@ -95,15 +97,14 @@ public class UserInterface {
         }
 
         io.print("Following fields are optional.");
-        
+
         for (Object header : book.returnOptionalHeaders()) {
-                String answer = io.readLine(header.toString() + "?");
-                fields.put(header.toString(), answer);
+            String answer = io.readLine(header.toString() + "?");
+            fields.put(header.toString(), answer);
         }
 
         //book.saveAll(fields);
-        writer = new WriteFile(fields);
-        writer.add();
+        dao.add("book", fields);
     }
 
 }
