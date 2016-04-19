@@ -45,7 +45,7 @@ scenario 'when adding a book, app asks all the right questions', {
     }
 
     then 'all the right questions are asked', {
-        io.getPrints().shouldHave("authors?")
+        io.getPrints().shouldHave("author?")
         io.getPrints().shouldHave("title?")
         io.getPrints().shouldHave("publisher?")
         io.getPrints().shouldHave("year?")

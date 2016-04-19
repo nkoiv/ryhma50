@@ -12,7 +12,7 @@ public abstract class EntryType {
     protected final ArrayList<String> necessaryHeaders;
     protected final ArrayList<String> optionalHeaders;
     protected final String TITLE = "title";
-    protected final String AUTHORS = "authors";
+    protected final String AUTHOR = "author";
     protected final String YEAR = "year";
     protected final String PUBLISHER = "publisher";
     protected final String VOLUME = "volume/number";
@@ -25,9 +25,9 @@ public abstract class EntryType {
 
     public EntryType() {
         this.latexFields = new HashMap<>();
-        addFieldsToHashMap(latexFields, TITLE, AUTHORS, YEAR, PUBLISHER, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY);
+        addFieldsToHashMap(latexFields, TITLE, AUTHOR, YEAR, PUBLISHER, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY);
         this.necessaryHeaders = new ArrayList<>();
-        addFieldsToArrayList(necessaryHeaders, TITLE, AUTHORS, YEAR);
+        addFieldsToArrayList(necessaryHeaders, TITLE, AUTHOR, YEAR);
         this.optionalHeaders = new ArrayList<>();
     }
 
@@ -52,7 +52,7 @@ public abstract class EntryType {
 //
 //        }
         this.latexFields.put(TITLE, fields.get(TITLE));
-        this.latexFields.put(AUTHORS, fields.get(AUTHORS));
+        this.latexFields.put(AUTHOR, fields.get(AUTHOR));
         this.latexFields.put(YEAR, fields.get(YEAR));
     }
 

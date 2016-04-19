@@ -11,6 +11,7 @@ import ryhma50.io.IO;
 public class UserInterface {
 
     private IO io;
+    private WriteFile writer;
 
     public UserInterface(IO io) {
 
@@ -42,7 +43,7 @@ public class UserInterface {
     }
 
     private void runCommand(String command) {
-        String entryType = io.readLine("Write entry type: ");
+        String entryType = io.readLine("Write entry type:");
         if (!validateEntryType(entryType)) {
             io.print("Invalid entry type");
         } else if (command.equalsIgnoreCase("add")) {
@@ -100,7 +101,9 @@ public class UserInterface {
                 fields.put(header.toString(), answer);
         }
 
-        book.saveAll(fields);
+        //book.saveAll(fields);
+        writer = new WriteFile(fields);
+        writer.add();
     }
 
 }

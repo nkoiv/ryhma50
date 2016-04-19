@@ -26,7 +26,7 @@ public class BookTest {
     private EntryType book;
     private final String TITLE = "title";
     private final String YEAR = "year";
-    private final String AUTHORS = "authors";
+    private final String AUTHOR = "author";
     private final String PUBLISHER = "publisher";
     private final String TITLETARGET = "herra hanurin sikailut";
     private final String YEARTARGET = "1993";
@@ -56,7 +56,7 @@ public class BookTest {
     @Test
     public void hasCorrectHeaders() {
         assertTrue("Does't contain correct headers", (book.returnAllHeaders().contains(TITLE) ||
-        book.returnAllHeaders().contains(AUTHORS)) ||
+        book.returnAllHeaders().contains(AUTHOR)) ||
         book.returnAllHeaders().contains(PUBLISHER) ||
         book.returnAllHeaders().contains(YEAR));
         
@@ -70,14 +70,14 @@ public class BookTest {
         dataInput.put(TITLE, TITLETARGET);
         dataInput.put(YEAR, YEARTARGET);
         dataInput.put(PUBLISHER, PUBLISHERTARGET);
-        dataInput.put(AUTHORS, AUTHORTARGET);
+        dataInput.put(AUTHOR, AUTHORTARGET);
         dataInput.put("ylimääräistä", "paskaa");
         book.saveAll(dataInput);
         Map<String,String> dataOutput = book.returnFields();
         assertEquals("Väärä otsikko", TITLETARGET, dataOutput.get(TITLE));
-        assertEquals( "Väärä vuosi", YEARTARGET, dataOutput.get(YEAR));
+        assertEquals("Väärä vuosi", YEARTARGET, dataOutput.get(YEAR));
         assertEquals("Väärä publisher", PUBLISHERTARGET, dataOutput.get(PUBLISHER));
-        assertEquals("Väärä author", AUTHORTARGET, dataOutput.get(AUTHORS));
+        assertEquals("Väärä author", AUTHORTARGET, dataOutput.get(AUTHOR));
         assertEquals("Ylimääräistä tavaraa", null, dataOutput.get("ylimääräistä"));
        
     }
@@ -89,7 +89,7 @@ public class BookTest {
     
     @Test
     public void methodReturnNecessaryHeadersWorks() {
-        assertTrue(book.returnNecessaryHeaders().contains("authors"));
+        assertTrue(book.returnNecessaryHeaders().contains("author"));
         assertTrue(book.returnNecessaryHeaders().contains("title"));
         assertTrue(book.returnNecessaryHeaders().contains("year"));
         assertTrue(book.returnNecessaryHeaders().contains("publisher"));
