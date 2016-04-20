@@ -83,11 +83,6 @@ public class BookTest {
     }
     
     @Test
-    public void lol2() {
-        
-    }
-    
-    @Test
     public void methodReturnNecessaryHeadersWorks() {
         assertTrue(book.returnNecessaryHeaders().contains("author"));
         assertTrue(book.returnNecessaryHeaders().contains("title"));

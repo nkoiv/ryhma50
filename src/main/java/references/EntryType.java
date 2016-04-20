@@ -48,12 +48,12 @@ public abstract class EntryType {
     }
 
     public void saveAll(HashMap<String, String> fields) {
-//        for (String header : nec) {
-//
-//        }
-        this.latexFields.put(TITLE, fields.get(TITLE));
-        this.latexFields.put(AUTHOR, fields.get(AUTHOR));
-        this.latexFields.put(YEAR, fields.get(YEAR));
+        for (String necessaryHeader : this.necessaryHeaders) {
+            latexFields.put(necessaryHeader, fields.get(necessaryHeader));
+        }
+        for (String optionalHeader : optionalHeaders) {
+            latexFields.put(optionalHeader, fields.get(optionalHeader));
+        }
     }
 
     protected void addFieldsToArrayList(ArrayList<String> fields, String... headers) {
