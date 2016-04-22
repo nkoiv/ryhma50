@@ -6,11 +6,13 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import references.Book;
 import references.EntryType;
 import ryhma50.data_access.DAO;
 import ryhma50.data_access.FileDAO;
@@ -42,8 +44,12 @@ public class StubDAO implements DAO {
     }
 
     @Override
-    public List<EntryType> listAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<EntryType> listAll() { // onko tän tarkoitus toimia näin? tätä ennen heitti vain not supported yet -ilmoituksen
+        // tehtiin tällainen testausta varten
+        List<EntryType> entryTypes = new ArrayList<EntryType>();
+        entryTypes.add(new Book());
+        // entryTypes.add(new Article());
+        return entryTypes;
     }
 
     @Override
@@ -78,6 +84,7 @@ public class StubDAO implements DAO {
             writer.close();
         } catch (IOException ex) {
             System.exit(-1);
+            
         }
     }
 }

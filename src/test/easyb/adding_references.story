@@ -1,7 +1,7 @@
 import ryhma50.*
 import ryhma50.io.*
 
-description 'User can use app to add a new reference'
+description 'User can use app to add new references'
 
 
 scenario 'user can add a book', {

@@ -11,10 +11,12 @@ import java.util.Scanner;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import references.Book;
 
 /**
  *
@@ -87,5 +89,18 @@ public class FileDAOTest {
         dao.add("book", null);
         File file = new File("src/test/resources/write_file_test.txt");
         assertTrue(file.length() == 0);
+    }
+    
+    @Test
+    public void methodListAllWorks() {
+        assertTrue(dao.listAll().get(0).returnNecessaryHeaders().contains("publisher"));
+    }
+    
+    @Test
+    public void addingBookToANonExistingFileDoesNotWork() {
+        File file = new File("src/test/resources/write_file_test.txt");
+        file.delete();
+        dao.add("book", fields);
+        assertFalse(file.exists());
     }
 }
