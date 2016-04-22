@@ -13,3 +13,21 @@ series = {5},
 publisher = {sara},
 title = {paras kirja},
 }
+@book{
+year = {kumpulan kampus},
+author = {paras kirja},
+publisher = {2016},
+title = {vilma ja sara},
+}
+@book{
+year = {kumpulan kampus},
+author = {paras kirja},
+publisher = {2016},
+title = {vilma ja sara},
+}
+@book{
+year = {kumpulan kampus},
+author = {paras kirja},
+publisher = {2016},
+title = {vilma ja sara},
+}
