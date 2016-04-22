@@ -70,6 +70,7 @@
                         <excludes>
                             <exclude>ryhma50/*.class</exclude>
                             <exclude>ryhma50/io/*.class</exclude>
+                            <exclude>ryhma50/data_access/FileDAO.class</exclude>
                         </excludes>
                     </instrumentation>
                     <formats>
