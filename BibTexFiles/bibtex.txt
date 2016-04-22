@@ -5,3 +5,11 @@ author = {verna},
 publisher = {hy},
 title = {kandi},
 }
+@book{
+volume/number = {3},
+year = {1956},
+author = {vilma},
+series = {5},
+publisher = {sara},
+title = {paras kirja},
+}

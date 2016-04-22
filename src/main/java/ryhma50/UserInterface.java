@@ -37,10 +37,14 @@ public class UserInterface {
     }
 
     private void printHelp() {
-        System.out.println("First choose a command by typing 'add' or 'get' \n"
-                + "Then choose an entry type by typing 'article', 'book' \n"
-                + "Add-command will ask you to fill field types \n"
-                + "and 'get' will print all the references.\n"
+//        System.out.println("First choose a command by typing 'add' or 'get' \n"
+//                + "Then choose an entry type by typing 'article', 'book' \n"
+//                + "Add-command will ask you to fill field types \n"
+//                + "and 'get' will print all the references.\n"
+//                + "Type nothing and press enter to exit.");
+        System.out.println("Add a reference by typing 'add'. \n"
+                + "Choose an entry type by typing 'book' \n"
+                + "and fill the asked field types. \n"
                 + "Type nothing and press enter to exit.");
     }
 

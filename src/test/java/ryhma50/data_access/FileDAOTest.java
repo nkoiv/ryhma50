@@ -1,3 +1,5 @@
+package ryhma50.data_access;
+
 
 import java.util.HashMap;
 import org.junit.After;
@@ -5,10 +7,6 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import ryhma50.data_access.DAO;
-import ryhma50.data_access.FileDAO;
-import ryhma50.data_access.StubDAO;
 
 /**
  *
