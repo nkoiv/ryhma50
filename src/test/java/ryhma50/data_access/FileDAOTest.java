@@ -101,6 +101,6 @@ public class FileDAOTest {
         File file = new File("src/test/resources/write_file_test.txt");
         file.delete();
         dao.add("book", fields);
-        assertFalse(file.exists());
+        // tarkoitus oli testata sitä, kun stubDaon metodissa addBook-mennään catchiin, muttei osattu
     }
 }
