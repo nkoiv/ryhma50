@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 import org.junit.After;
@@ -57,10 +58,14 @@ public class FileDAOTest {
     @Test
     public void testWritingBookReference() {
         dao.add("book", fields);
-        String firstLine = reader.nextLine();
-        String secondLine = reader.nextLine();
-        assertEquals("@book{", firstLine);
-        assertEquals("year = {2016},", secondLine);
+        ArrayList<String> lines = new ArrayList<String>();
+        
+        while (reader.hasNextLine()) {
+            lines.add(reader.nextLine());
+        }
+        
+        assertTrue(lines.contains("@book{"));
+        assertTrue(lines.contains("title = {best book},"));
     }
 
     @Test
