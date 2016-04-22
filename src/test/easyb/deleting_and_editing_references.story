@@ -9,7 +9,7 @@ scenario 'user can edit a reference', {
     then 'the reference is changed and saved'
 }
 
-scenario 'user can't edit a reference that doesn't exist', {
+scenario 'user can not edit a reference that does not exist', {
     given 'app runs and command edit a reference is selected'
     when 'a non-existing reference is given'
     then 'an error-message is printed'
@@ -21,7 +21,7 @@ scenario 'user can delete a reference', {
     then 'the reference is deleted'
 }
 
-scenario 'user can't delete a reference that doen't exist', {
+scenario 'user can not delete a reference that doe not exist', {
     given 'app runs and command delete a reference is selected'
     when 'a non-existing reference is given'
     then 'an error-message is printed'
