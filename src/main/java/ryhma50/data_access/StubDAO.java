@@ -27,6 +27,7 @@ public class StubDAO implements DAO {
     private BufferedWriter writer;
     private HashMap<String, String> fields;
     private final static String FILE = "src/test/resources/write_file_test.txt";
+    private int tapahtuikoVirhetilanne = 0;
 
     public StubDAO() {
         try {
@@ -83,8 +84,13 @@ public class StubDAO implements DAO {
             writer.flush();
             writer.close();
         } catch (IOException ex) {
+            tapahtuikoVirhetilanne = 1;
             System.exit(-1);
-            
+
         }
+    }
+
+    public boolean tapahtuikoVirhe() { // testejä varten. palauttaa true jos jossain on menty catchiin
+        return tapahtuikoVirhetilanne == 1;
     }
 }

@@ -8,11 +8,14 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -98,9 +101,16 @@ public class FileDAOTest {
     
     @Test
     public void addingBookToANonExistingFileDoesNotWork() {
-        File file = new File("src/test/resources/write_file_test.txt");
-        file.delete();
-        dao.add("book", fields);
-        // tarkoitus oli testata sitä, kun stubDaon metodissa addBook-mennään catchiin, muttei osattu
+//        File file = new File("src/test/resources/write_file_test.txt");
+//        file.delete();
+//        dao.add("book", fields);
+        try {
+            File file = new File("src/test/resources/write_file_test.txt");
+            file.delete();
+            dao.add("book", fields);
+//            fail("sdfsdf");
+        } catch (Exception ex) {
+            assertThat(ex.getMessage(), is(""));
+        }
     }
 }

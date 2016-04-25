@@ -76,6 +76,7 @@ public class FileDAO implements DAO {
             writer.flush();
             writer.close();
         } catch (IOException ex) {
+            System.out.println(ex.getMessage());
             System.exit(-1);
         }
     }
