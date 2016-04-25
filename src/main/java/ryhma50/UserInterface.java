@@ -87,8 +87,6 @@ public class UserInterface {
 
     private void addBook() {
         Book book = new Book();
-        HashMap<String, String> fields = new HashMap<String, String>();
-
         io.print("Give us the information about the book.");
 
         for (String header : book.returnNecessaryHeaders()) {
@@ -96,19 +94,19 @@ public class UserInterface {
             while (answer.isEmpty()) {
                 io.print("You must fill this field!");
                 answer = io.readLine(header + "?");
+                book.addHeaderValue(header, answer);
             }
-            fields.put(header.toString(), answer);
         }
 
         io.print("Following fields are optional.");
 
-        for (Object header : book.returnOptionalHeaders()) {
+        for (String header : book.returnOptionalHeaders()) {
             String answer = io.readLine(header.toString() + "?");
-            fields.put(header.toString(), answer);
+            book.addHeaderValue(header, answer);
         }
 
         //book.saveAll(fields);
-        dao.add("book", fields);
+        dao.add(book);
     }
 
 }

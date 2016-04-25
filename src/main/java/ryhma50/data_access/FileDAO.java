@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import references.Book;
 import references.EntryType;
 
 /**
@@ -46,12 +47,13 @@ public class FileDAO implements DAO {
     }
 
     @Override
-    public void add(String type, HashMap<String, String> fields) {
+    public void add(EntryType entry) {
+        this.fields = (HashMap) entry.getLatexFields();
         if (fields == null || fields.size() == 0) {
             System.out.println("Fields can't be empty or null");
         } else {
             setFields(fields);
-            if ("book".equalsIgnoreCase(type)) {
+            if (entry instanceof Book) {
                 addBook();
             } else {
                 System.out.println("wtf");

@@ -12,6 +12,6 @@ public interface DAO {
 
     List<EntryType> listAll();
 
-    void add(String type, HashMap<String, String> fields);
+    void add(EntryType entry);
 
 }

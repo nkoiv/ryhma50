@@ -7,12 +7,12 @@ import java.util.Set;
  *
  * @author Studies
  */
-public class Book extends EntryType {
+public class Article extends EntryType {
 
     /**
      * Add necessary and optional headers.
      */
-    public Book() {
+    public Article() {
         super();
         addFieldsToArrayList(super.necessaryHeaders, PUBLISHER);
         addFieldsToArrayList(super.optionalHeaders, VOLUME, SERIES, ADDRESS, EDITION, MONTH, NOTE, KEY);

@@ -8,7 +8,7 @@ import java.util.*;
  */
 public abstract class EntryType {
 
-    protected final HashMap<String, String> latexFields;
+    protected HashMap<String, String> latexFields;
     protected final ArrayList<String> necessaryHeaders;
     protected final ArrayList<String> optionalHeaders;
     protected final String TITLE = "title";
@@ -30,8 +30,14 @@ public abstract class EntryType {
         addFieldsToArrayList(necessaryHeaders, TITLE, AUTHOR, YEAR);
         this.optionalHeaders = new ArrayList<>();
     }
+    
+    public void addHeaderValue(String header, String value) {
+        if (necessaryHeaders.contains(header) || optionalHeaders.contains(header)) {
+            this.latexFields.put(header, value);
+        }
+    }
 
-    public Map returnFields() {
+    public Map getLatexFields() {
         return this.latexFields;
     }
 
@@ -66,6 +72,11 @@ public abstract class EntryType {
         for (String header : headers) {
             fields.put(header, "");
         }
+    }
+    
+    // For test purposes
+    public void setLatexFields(HashMap<String, String> map) {
+        this.latexFields = map;
     }
 
 }
