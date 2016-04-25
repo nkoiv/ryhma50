@@ -23,5 +23,9 @@ public class Book extends EntryType {
 //        return super.returnAllHeaders();
 //    }
 
-
+      
+    @Override
+    public String getEntryType() {
+        return "book";
+    }
 }

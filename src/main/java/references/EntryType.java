@@ -15,7 +15,7 @@ public abstract class EntryType {
     protected final String AUTHOR = "author";
     protected final String YEAR = "year";
     protected final String PUBLISHER = "publisher";
-    protected final String VOLUME = "volume/number";
+    protected final String VOLUME = "volume";
     protected final String SERIES = "series";
     protected final String ADDRESS = "address";
     protected final String EDITION = "edition";
@@ -82,4 +82,7 @@ public abstract class EntryType {
         this.latexFields = map;
     }
 
+    public String getEntryType() {
+        return null;
+    }
 }

@@ -7,7 +7,7 @@ description 'User can use app to add new references'
 scenario 'user can add a book', {
     given 'app runs and command add is selected', {
         io = new StubIO("add", "book", "vilma ja sara", "paras kirja", "kumpulan kampus", "2016", "", "", "", "", "", "", "")
-        ui = new UserInterface(io)
+        ui = new StubUserInterface(io)
     }
 
     when 'books information is given correctly', {
@@ -22,7 +22,7 @@ scenario 'user can add a book', {
 scenario 'user can add a book even if they leave a necessary field empty at first', {
     given 'app runs and command add is selected', {
         io = new StubIO("add", "book", "", "vilma ja sara", "paras kirja", "kumpulan kampus", "2016", "", "", "", "", "", "", "")
-        ui = new UserInterface(io)
+        ui = new StubUserInterface(io)
     }
 
     when 'a necessary field is left empty at first but then books information is given correctly', {
@@ -37,7 +37,7 @@ scenario 'user can add a book even if they leave a necessary field empty at firs
 scenario 'when adding a book, app asks all the right questions', {
     given 'app runs and command add is selected', {
         io = new StubIO("add", "book", "vilma ja sara", "paras kirja", "kumpulan kampus", "2016", "", "", "", "", "", "", "")
-        ui = new UserInterface(io)
+        ui = new StubUserInterface(io)
     }
 
     when 'books information is given correctly', {
@@ -49,7 +49,7 @@ scenario 'when adding a book, app asks all the right questions', {
         io.getPrints().shouldHave("title?")
         io.getPrints().shouldHave("publisher?")
         io.getPrints().shouldHave("year?")
-        io.getPrints().shouldHave("volume/number?")
+        io.getPrints().shouldHave("volume?")
         io.getPrints().shouldHave("series?")
         io.getPrints().shouldHave("address?")
         io.getPrints().shouldHave("edition?")

@@ -1,25 +1,19 @@
 package ryhma50;
 
-import java.util.HashMap;
-import references.Article;
 import references.Book;
 import references.EntryType;
 import ryhma50.data_access.DAO;
-import ryhma50.data_access.FileDAO;
+import ryhma50.data_access.StubDAO;
 import ryhma50.io.IO;
 
-/**
- *
- * @author marko
- */
-public class UserInterface {
+public class StubUserInterface {
 
     private IO io;
     private DAO dao;
 
-    public UserInterface(IO io) {
+    public StubUserInterface(IO io) {
         this.io = io;
-        this.dao = new FileDAO();
+        this.dao = new StubDAO();
     }
 
     public void run() {
@@ -68,18 +62,12 @@ public class UserInterface {
 //        } else {
 //            //ask field types and write them to article file
 //        }
-//        for (EntryType entrytype : dao.listAll()) {
-//            if (entrytype.getEntryType().equals(entryType)) {
-//                addEntry(entrytype);
-//                io.print("New entry added");
-//            }
-//        }
-        if (entryType.equals("book")) {
-            EntryType entry = new Book();
-            addEntry(entry);
-        } else if (entryType.equals("article")) {
-            EntryType entry = new Article();
-            addEntry(entry);
+        // onko entrytype kirjoitettu väärin -tarkistus
+        for (EntryType entrytype : dao.listAll()) {
+            if (entrytype.getEntryType().equals(entryType)) {
+                addEntry(entrytype);
+                io.print("New entry added");
+            }
         }
     }
 
@@ -101,6 +89,7 @@ public class UserInterface {
 
     private void addEntry(EntryType entry) {
 //        Book book = new Book();
+
         io.print("Give us the information about the entry.");
 
         for (String header : entry.returnNecessaryHeaders()) {

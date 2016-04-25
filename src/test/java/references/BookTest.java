@@ -92,7 +92,7 @@ public class BookTest {
 
     @Test
     public void methodReturnsOptionalHeadersWorks() {
-        assertTrue(book.returnOptionalHeaders().contains("volume/number"));
+        assertTrue(book.returnOptionalHeaders().contains("volume"));
         assertTrue(book.returnOptionalHeaders().contains("series"));
         assertTrue(book.returnOptionalHeaders().contains("address"));
         assertTrue(book.returnOptionalHeaders().contains("edition"));

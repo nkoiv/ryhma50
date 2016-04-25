@@ -23,5 +23,9 @@ public class Article extends EntryType {
 //        return super.returnAllHeaders();
 //    }
 
+    @Override
+    public String getEntryType() {
+        return "article";
+    }
 
 }
