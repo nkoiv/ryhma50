@@ -85,4 +85,8 @@ public abstract class EntryType {
     public String getEntryType() {
         return null;
     }
+    
+    public String getValueFromHeader(String header) {
+        return latexFields.get(header);
+    }
 }

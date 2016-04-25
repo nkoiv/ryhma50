@@ -27,6 +27,7 @@ public class FileDAO implements DAO {
     private BufferedWriter writer;
     private HashMap<String, String> fields;
     private final static String FILE = "BibTexFiles/bibtex.txt";
+    private EntryType entry;
 
     public FileDAO() {
         try {
@@ -53,11 +54,10 @@ public class FileDAO implements DAO {
 
     @Override
     public void add(EntryType entry) {
-        this.fields = (HashMap) entry.getLatexFields();
-        if (fields == null || fields.size() == 0) {
+        this.entry = entry;
+        if (entry.getLatexFields() == null || entry.getLatexFields().isEmpty()) {
             System.out.println("Fields can't be empty or null");
         } else {
-            setFields(fields);
             if (entry instanceof Book) {
                 addBook();
             } else if (entry instanceof Article) {
@@ -76,8 +76,8 @@ public class FileDAO implements DAO {
     private void addBook() {
         try {
             writer.write("@book{\n");
-            for (String s : fields.keySet()) {
-                String userInput = fields.get(s);
+            for (Object s : entry.returnAllHeaders()) {
+                String userInput = this.entry.getValueFromHeader((String) s);
                 if (!userInput.isEmpty()) {
                     writer.write(s + " = {" + userInput + "},\n");
                 }

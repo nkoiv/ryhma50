@@ -108,8 +108,9 @@ public class UserInterface {
             while (answer.isEmpty()) {
                 io.print("You must fill this field!");
                 answer = io.readLine(header + "?");
-                entry.addHeaderValue(header, answer);
             }
+            entry.addHeaderValue(header, answer);
+
         }
 
         io.print("Following fields are optional.");
