@@ -1,39 +1,7 @@
-
 @book{
-year = {2016},
-author = {verna},
-publisher = {hy},
-title = {kandi},
-}
-@book{
-volume/number = {3},
-year = {1956},
-author = {vilma},
-series = {5},
-publisher = {sara},
-title = {paras kirja},
-}
-@book{
-year = {kumpulan kampus},
-author = {paras kirja},
-publisher = {2016},
-title = {vilma ja sara},
-}
-@book{
-year = {kumpulan kampus},
-author = {paras kirja},
-publisher = {2016},
-title = {vilma ja sara},
-}
-@book{
-year = {kumpulan kampus},
-author = {paras kirja},
-publisher = {2016},
-title = {vilma ja sara},
-}
-@book{
-year = {k},
-author = {k},
-publisher = {k},
-title = {k},
+volume = {5},
+year = {3},
+author = {2},
+publisher = {4},
+title = {1},
 }

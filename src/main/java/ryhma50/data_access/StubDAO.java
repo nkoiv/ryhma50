@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import references.Article;
 import references.Book;
 import references.EntryType;
 import ryhma50.data_access.DAO;
@@ -49,17 +50,18 @@ public class StubDAO implements DAO {
         // tehtiin tällainen testausta varten
         List<EntryType> entryTypes = new ArrayList<EntryType>();
         entryTypes.add(new Book());
-        // entryTypes.add(new Article());
+         entryTypes.add(new Article());
         return entryTypes;
     }
 
     @Override
-    public void add(String type, HashMap<String, String> fields) {
+    public void add(EntryType entry) {
+        this.fields = (HashMap) entry.getLatexFields();
         if (fields == null || fields.size() == 0) {
             System.out.println("Fields can't be empty or null");
         } else {
             setFields(fields);
-            if ("book".equalsIgnoreCase(type)) {
+            if (entry instanceof Book) {
                 addBook();
             } else {
                 System.out.println("wtf");

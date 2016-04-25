@@ -49,7 +49,7 @@ scenario 'when adding a book, app asks all the right questions', {
         io.getPrints().shouldHave("title?")
         io.getPrints().shouldHave("publisher?")
         io.getPrints().shouldHave("year?")
-        io.getPrints().shouldHave("volume/number?")
+        io.getPrints().shouldHave("volume?")
         io.getPrints().shouldHave("series?")
         io.getPrints().shouldHave("address?")
         io.getPrints().shouldHave("edition?")

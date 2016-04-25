@@ -73,7 +73,7 @@ public class BookTest {
         dataInput.put(AUTHOR, AUTHORTARGET);
         dataInput.put("ylimääräistä", "paskaa");
         book.saveAll(dataInput);
-        Map<String,String> dataOutput = book.returnFields();
+        Map<String,String> dataOutput = book.getLatexFields();
         assertEquals("Väärä otsikko", TITLETARGET, dataOutput.get(TITLE));
         assertEquals("Väärä vuosi", YEARTARGET, dataOutput.get(YEAR));
         assertEquals("Väärä publisher", PUBLISHERTARGET, dataOutput.get(PUBLISHER));
@@ -92,7 +92,7 @@ public class BookTest {
 
     @Test
     public void methodReturnsOptionalHeadersWorks() {
-        assertTrue(book.returnOptionalHeaders().contains("volume/number"));
+        assertTrue(book.returnOptionalHeaders().contains("volume"));
         assertTrue(book.returnOptionalHeaders().contains("series"));
         assertTrue(book.returnOptionalHeaders().contains("address"));
         assertTrue(book.returnOptionalHeaders().contains("edition"));

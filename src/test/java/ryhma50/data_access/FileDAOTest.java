@@ -19,7 +19,9 @@ import static org.junit.Assert.fail;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import references.Article;
 import references.Book;
+import references.EntryType;
 
 /**
  *
@@ -30,6 +32,7 @@ public class FileDAOTest {
     private HashMap<String, String> fields = new HashMap<>();
     private StubDAO dao;
     private Scanner reader;
+    private Book book = new Book();
 
     public FileDAOTest() {
     }
@@ -44,11 +47,11 @@ public class FileDAOTest {
 
     @Before
     public void setUp() throws FileNotFoundException {
-        fields.put("author", "pentti");
-        fields.put("title", "best book");
-        fields.put("publisher", "yolo");
-        fields.put("year", "2016");
-        fields.put("key", "");
+        book.addHeaderValue("author", "pentti");
+        book.addHeaderValue("title", "best book");
+        book.addHeaderValue("publisher", "yolo");
+        book.addHeaderValue("year", "2016");
+        book.addHeaderValue("key", "");
         dao = new StubDAO();
         reader = new Scanner(new File("src/test/resources/write_file_test.txt"));
     }
@@ -62,7 +65,7 @@ public class FileDAOTest {
 
     @Test
     public void testWritingBookReference() {
-        dao.add("book", fields);
+        dao.add(book);
         ArrayList<String> lines = new ArrayList<String>();
         
         while (reader.hasNextLine()) {
@@ -75,21 +78,23 @@ public class FileDAOTest {
 
     @Test
     public void testWritingReferenceWithWrongType() {
-        dao.add("eer", fields);
+        dao.add(new Article());
         File file = new File("src/test/resources/write_file_test.txt");
         assertTrue(file.length() == 0);
     }
 
     @Test
     public void testWritingBookReferenceWithEmptyField() {
-        dao.add("book", new HashMap<String, String>());
+        book.setLatexFields(new HashMap<String, String>() );
+        dao.add(book);
         File file = new File("src/test/resources/write_file_test.txt");
         assertTrue(file.length() == 0);
     }
 
     @Test
     public void testWritingBookReferenceWithNullField() {
-        dao.add("book", null);
+        book.setLatexFields(null);
+        dao.add(book);
         File file = new File("src/test/resources/write_file_test.txt");
         assertTrue(file.length() == 0);
     }
@@ -101,19 +106,9 @@ public class FileDAOTest {
     
     @Test
     public void addingBookToANonExistingFileDoesNotWork() {
-//        File file = new File("src/test/resources/write_file_test.txt");
-//        file.delete();
-//        dao.add("book", fields);
-        StubDAO uusDao = new StubDAO();
-        try {
-            
-            File file = new File("src/test/resources/write_file_test.txt");
-            file.delete();
-            uusDao.add("book", fields);
-//            fail("sdfsdf");
-        } catch (Exception ex) {
-            assertTrue(true);
-            System.out.println("asfsdf");
-        }
+
+        File file = new File("src/test/resources/write_file_test.txt");
+        file.delete();
+        dao.add(book);
     }
 }

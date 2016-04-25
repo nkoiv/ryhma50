@@ -1,7 +1,9 @@
 package ryhma50;
 
 import java.util.HashMap;
+import references.Article;
 import references.Book;
+import references.EntryType;
 import ryhma50.data_access.DAO;
 import ryhma50.data_access.FileDAO;
 import ryhma50.io.IO;
@@ -43,7 +45,7 @@ public class UserInterface {
 //                + "and 'get' will print all the references.\n"
 //                + "Type nothing and press enter to exit.");
         System.out.println("Add a reference by typing 'add'. \n"
-                + "Choose an entry type by typing 'book' \n"
+                + "Choose an entry type by typing 'book' or 'article' \n"
                 + "and fill the asked field types. \n"
                 + "Type nothing and press enter to exit.");
     }
@@ -60,13 +62,25 @@ public class UserInterface {
     }
 
     private void runCommandAdd(String entryType) {
-        if (entryType.equalsIgnoreCase("book")) {
-            //ask field types and write them to book file
-            addBook();
-        } else {
-            //ask field types and write them to article file
+//        if (entryType.equalsIgnoreCase("book")) {
+//            //ask field types and write them to book file
+//            addBook();
+//        } else {
+//            //ask field types and write them to article file
+//        }
+//        for (EntryType entrytype : dao.listAll()) {
+//            if (entrytype.getEntryType().equals(entryType)) {
+//                addEntry(entrytype);
+//                io.print("New entry added");
+//            }
+//        }
+        if (entryType.equals("book")) {
+            EntryType entry = new Book();
+            addEntry(entry);
+        } else if (entryType.equals("article")) {
+            EntryType entry = new Article();
+            addEntry(entry);
         }
-        io.print("New entry added");
     }
 
     private void runCommandGet(String entryType) {
@@ -85,30 +99,28 @@ public class UserInterface {
         return entryType.equalsIgnoreCase("book") || entryType.equalsIgnoreCase("article");
     }
 
-    private void addBook() {
-        Book book = new Book();
-        HashMap<String, String> fields = new HashMap<String, String>();
+    private void addEntry(EntryType entry) {
+//        Book book = new Book();
+        io.print("Give us the information about the entry.");
 
-        io.print("Give us the information about the book.");
-
-        for (String header : book.returnNecessaryHeaders()) {
+        for (String header : entry.returnNecessaryHeaders()) {
             String answer = io.readLine(header + "?");
             while (answer.isEmpty()) {
                 io.print("You must fill this field!");
                 answer = io.readLine(header + "?");
             }
-            fields.put(header.toString(), answer);
+            entry.addHeaderValue(header, answer);
+
         }
 
         io.print("Following fields are optional.");
 
-        for (Object header : book.returnOptionalHeaders()) {
+        for (String header : entry.returnOptionalHeaders()) {
             String answer = io.readLine(header.toString() + "?");
-            fields.put(header.toString(), answer);
+            entry.addHeaderValue(header, answer);
         }
-
-        //book.saveAll(fields);
-        dao.add("book", fields);
+        
+        dao.add(entry);
     }
 
 }

@@ -8,20 +8,23 @@ import java.util.*;
  */
 public abstract class EntryType {
 
-    protected final HashMap<String, String> latexFields;
+    protected HashMap<String, String> latexFields;
     protected final ArrayList<String> necessaryHeaders;
     protected final ArrayList<String> optionalHeaders;
     protected final String TITLE = "title";
     protected final String AUTHOR = "author";
     protected final String YEAR = "year";
     protected final String PUBLISHER = "publisher";
-    protected final String VOLUME = "volume/number";
+    protected final String VOLUME = "volume";
     protected final String SERIES = "series";
     protected final String ADDRESS = "address";
     protected final String EDITION = "edition";
     protected final String MONTH = "month";
     protected final String NOTE = "note";
     protected final String KEY = "key";
+    protected final String JOURNAL = "journal";
+    protected final String NUMBER = "number";
+    protected final String PAGES = "pages";
 
     public EntryType() {
         this.latexFields = new HashMap<>();
@@ -30,8 +33,14 @@ public abstract class EntryType {
         addFieldsToArrayList(necessaryHeaders, TITLE, AUTHOR, YEAR);
         this.optionalHeaders = new ArrayList<>();
     }
+    
+    public void addHeaderValue(String header, String value) {
+        if (necessaryHeaders.contains(header) || optionalHeaders.contains(header)) {
+            this.latexFields.put(header, value);
+        }
+    }
 
-    public Map returnFields() {
+    public Map getLatexFields() {
         return this.latexFields;
     }
 
@@ -67,5 +76,17 @@ public abstract class EntryType {
             fields.put(header, "");
         }
     }
+    
+    // For test purposes
+    public void setLatexFields(HashMap<String, String> map) {
+        this.latexFields = map;
+    }
 
+    public String getEntryType() {
+        return null;
+    }
+    
+    public String getValueFromHeader(String header) {
+        return latexFields.get(header);
+    }
 }
