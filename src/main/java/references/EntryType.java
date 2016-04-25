@@ -22,6 +22,9 @@ public abstract class EntryType {
     protected final String MONTH = "month";
     protected final String NOTE = "note";
     protected final String KEY = "key";
+    protected final String JOURNAL = "journal";
+    protected final String NUMBER = "number";
+    protected final String PAGES = "pages";
 
     public EntryType() {
         this.latexFields = new HashMap<>();
