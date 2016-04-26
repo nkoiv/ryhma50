@@ -66,10 +66,10 @@
             </thead>
             <tbody>
               <tr class='primaryRow'>
-                <td>3</td>
+                <td>9</td>
                 <td class=''>0</td>
-                <td class=''>0</td>
-                <td>0.441</td>
+                <td class='stepResultPending'>4</td>
+                <td>0.412</td>
               </tr>
             </tbody>
           </table>
@@ -86,11 +86,11 @@
             </thead>
             <tbody>
               <tr class='primaryRow'>
-                <td>1</td>
                 <td>3</td>
+                <td>9</td>
                 <td class=''>0</td>
-                <td class=''>0</td>
-                <td>0.441</td>
+                <td class='stepResultPending'>4</td>
+                <td>0.412</td>
               </tr>
             </tbody>
           </table>
@@ -133,13 +133,13 @@
       <tr class='primaryRow'>
         <td>
          
-          <a href="#" onclick="$('scenarios_for_story_' + 0).toggle(); return false;">adding_reference</a>
+          <a href="#" onclick="$('scenarios_for_story_' + 0).toggle(); return false;">adding_references</a>
          
         </td>
-        <td>3</td>
+        <td>4</td>
         <td class=''>0</td>
         <td class=''>0</td>
-        <td>0.441</td>
+        <td>0.337</td>
       </tr>
 
        
@@ -151,7 +151,7 @@
               <tr class='primaryScenarioRow'>
                 <td title='Scenario'>user can add a book</td>
                 <td title='Result' class='stepResultSuccess'>success</td>
-                <td title='Time (sec)'>0.031</td>
+                <td title='Time (sec)'>0.029</td>
               </tr>
               
               <tr class='scenarioComponents'>
@@ -179,7 +179,7 @@
               <tr class='secondaryScenarioRow'>
                 <td title='Scenario'>user can add a book even if they leave a necessary field empty at first</td>
                 <td title='Result' class='stepResultSuccess'>success</td>
-                <td title='Time (sec)'>0.004</td>
+                <td title='Time (sec)'>0.003</td>
               </tr>
               
               <tr class='scenarioComponents'>
@@ -206,6 +206,34 @@
               
               <tr class='primaryScenarioRow'>
                 <td title='Scenario'>when adding a book, app asks all the right questions</td>
+                <td title='Result' class='stepResultSuccess'>success</td>
+                <td title='Time (sec)'>0.002</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given app runs and command add is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when books information is given correctly</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then all the right questions are asked</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='secondaryScenarioRow'>
+                <td title='Scenario'>when adding an article, app asks all the right questions</td>
                 <td title='Result' class='stepResultSuccess'>success</td>
                 <td title='Time (sec)'>0.004</td>
               </tr>
@@ -238,6 +266,194 @@
       </tr>
       
       
+      <tr class='secondaryRow'>
+        <td>
+         
+          <a href="#" onclick="$('scenarios_for_story_' + 1).toggle(); return false;">deleting_and_editing_references</a>
+         
+        </td>
+        <td>4</td>
+        <td class=''>0</td>
+        <td class='stepResultPending'>4</td>
+        <td>0.031</td>
+      </tr>
+
+       
+      <tr id='scenarios_for_story_1' class='scenariosForStory' style='display:none;'>
+        <td colspan='5'>
+          <table class='scenariosForStoriesTable'>
+            <tbody>
+              
+              <tr class='primaryScenarioRow'>
+                <td title='Scenario'>user can edit a reference</td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.002</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given app runs and command edit a reference is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when reference and changes are given</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then the reference is changed and saved</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='secondaryScenarioRow'>
+                <td title='Scenario'>user can not edit a reference that does not exist</td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.002</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given app runs and command edit a reference is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a non-existing reference is given</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then an error-message is printed</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='primaryScenarioRow'>
+                <td title='Scenario'>user can delete a reference</td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.001</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given app runs and command delete a reference is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when reference is given</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then the reference is deleted</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+              <tr class='secondaryScenarioRow'>
+                <td title='Scenario'>user can not delete a reference that doe not exist</td>
+                <td title='Result' class='stepResultPending'>pending</td>
+                <td title='Time (sec)'>0.002</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given app runs and command delete a reference is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when a non-existing reference is given</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then an error-message is printed</td>
+                <td class='stepResultPending'>pending</td>
+                <td />
+              </tr>
+              
+              
+              
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      
+      
+      <tr class='primaryRow'>
+        <td>
+         
+          <a href="#" onclick="$('scenarios_for_story_' + 2).toggle(); return false;">print_references</a>
+         
+        </td>
+        <td>1</td>
+        <td class=''>0</td>
+        <td class=''>0</td>
+        <td>0.044</td>
+      </tr>
+
+       
+      <tr id='scenarios_for_story_2' class='scenariosForStory' style='display:none;'>
+        <td colspan='5'>
+          <table class='scenariosForStoriesTable'>
+            <tbody>
+              
+              <tr class='primaryScenarioRow'>
+                <td title='Scenario'>user can print references</td>
+                <td title='Result' class='stepResultSuccess'>success</td>
+                <td title='Time (sec)'>0.021</td>
+              </tr>
+              
+              <tr class='scenarioComponents'>
+                <td>given app runs</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>when command print is selected</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              <tr class='scenarioComponents'>
+                <td>then references are printed in a readable form for humans</td>
+                <td class='stepResultSuccess'>success</td>
+                <td />
+              </tr>
+              
+              
+              
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      
+      
     </tbody>
   </table>
 </div>
@@ -248,8 +464,8 @@
 <div id='StoriesListPlain' style='display:none;'>
   <h2>Stories Text</h2>
   
-  <div>3 scenarios executed successfully.</div>
-  <div><br/><br/>&nbsp;&nbsp;Story: adding_reference<br/><br/>&nbsp;&nbsp;&nbsp;User can use app to add new reference<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can add a book<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command add is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when books information is given correctly<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then book-entry is added<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can add a book even if they leave a necessary field empty at first<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command add is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a necessary field is left empty at first but then books information is given correctly<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then book-entry is added<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario when adding a book, app asks all the right questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command add is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when books information is given correctly<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then all the right questions are asked</div>
+  <div>9 scenarios (including 4 pending) executed successfully.</div>
+  <div><br/><br/>&nbsp;&nbsp;Story: adding_references<br/><br/>&nbsp;&nbsp;&nbsp;User can use app to add new references<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can add a book<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command add is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when books information is given correctly<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then book-entry is added<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can add a book even if they leave a necessary field empty at first<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command add is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a necessary field is left empty at first but then books information is given correctly<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then book-entry is added<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario when adding a book, app asks all the right questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command add is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when books information is given correctly<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then all the right questions are asked<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario when adding an article, app asks all the right questions<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command add is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when books information is given correctly<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then all the right questions are asked<br/><br/>&nbsp;&nbsp;Story: deleting_and_editing_references<br/><br/>&nbsp;&nbsp;&nbsp;User can edit and delete references<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can edit a reference<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command edit a reference is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when reference and changes are given<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then the reference is changed and saved&nbsp;<span style='color:#BABFEE;'>[PENDING]</span><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can not edit a reference that does not exist<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command edit a reference is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a non-existing reference is given<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then an error-message is printed&nbsp;<span style='color:#BABFEE;'>[PENDING]</span><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can delete a reference<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command delete a reference is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when reference is given<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then the reference is deleted&nbsp;<span style='color:#BABFEE;'>[PENDING]</span><br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can not delete a reference that doe not exist<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs and command delete a reference is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when a non-existing reference is given<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then an error-message is printed&nbsp;<span style='color:#BABFEE;'>[PENDING]</span><br/><br/>&nbsp;&nbsp;Story: print_references<br/><br/>&nbsp;&nbsp;&nbsp;User can read already created references<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;scenario user can print references<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;given app runs<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;when command print is selected<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;then references are printed in a readable form for humans</div>
 </div>
 
       </div>

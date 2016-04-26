@@ -1,0 +1,37 @@
+@book{
+year = {kumpulan kampus},
+author = {paras kirja},
+publisher = {2016},
+title = {vilma ja sara},
+}
+
+@book{
+year = {kumpulan kampus},
+author = {paras kirja},
+publisher = {2016},
+title = {vilma ja sara},
+}
+
+@book{
+year = {kumpulan kampus},
+author = {paras kirja},
+publisher = {2016},
+title = {vilma ja sara},
+}
+
+@article{
+year = {kumpulan kampus},
+author = {paras kirja},
+title = {vilma ja sara},
+volume = {plop},
+journal = {2016},
+}
+
+@article{
+year = {kumpulan kampus},
+author = {paras kirja},
+title = {vilma ja sara},
+volume = {plop},
+journal = {2016},
+}
+

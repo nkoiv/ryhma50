@@ -1,21 +1,57 @@
-<easyb time='Tue Apr 19 21:25:45 EEST 2016' totalbehaviors='3' totalfailedbehaviors='0' totalpendingbehaviors='0' executionTime='441'>
-  <stories scenarios='3' failedscenarios='0' pendingscenarios='0' executionTime='441'>
-    <story name='adding_reference' scenarios='3' failedscenarios='0' pendingscenarios='0' executionTime='441'>
-      <description name='User can use app to add new reference' />
-      <scenario name='user can add a book' result='success' executionTime='31'>
+<easyb time='Tue Apr 26 22:24:24 EEST 2016' totalbehaviors='9' totalfailedbehaviors='0' totalpendingbehaviors='4' executionTime='412'>
+  <stories scenarios='9' failedscenarios='0' pendingscenarios='4' executionTime='412'>
+    <story name='adding_references' scenarios='4' failedscenarios='0' pendingscenarios='0' executionTime='337'>
+      <description name='User can use app to add new references' />
+      <scenario name='user can add a book' result='success' executionTime='29'>
         <given name='app runs and command add is selected' result='success' />
         <when name='books information is given correctly' result='success' />
         <then name='book-entry is added' result='success' />
       </scenario>
-      <scenario name='user can add a book even if they leave a necessary field empty at first' result='success' executionTime='4'>
+      <scenario name='user can add a book even if they leave a necessary field empty at first' result='success' executionTime='3'>
         <given name='app runs and command add is selected' result='success' />
         <when name='a necessary field is left empty at first but then books information is given correctly' result='success' />
         <then name='book-entry is added' result='success' />
       </scenario>
-      <scenario name='when adding a book, app asks all the right questions' result='success' executionTime='4'>
+      <scenario name='when adding a book, app asks all the right questions' result='success' executionTime='2'>
         <given name='app runs and command add is selected' result='success' />
         <when name='books information is given correctly' result='success' />
         <then name='all the right questions are asked' result='success' />
+      </scenario>
+      <scenario name='when adding an article, app asks all the right questions' result='success' executionTime='4'>
+        <given name='app runs and command add is selected' result='success' />
+        <when name='books information is given correctly' result='success' />
+        <then name='all the right questions are asked' result='success' />
+      </scenario>
+    </story>
+    <story name='deleting_and_editing_references' scenarios='4' failedscenarios='0' pendingscenarios='4' executionTime='31'>
+      <description name='User can edit and delete references' />
+      <scenario name='user can edit a reference' result='pending' executionTime='2'>
+        <given name='app runs and command edit a reference is selected' result='success' />
+        <when name='reference and changes are given' result='success' />
+        <then name='the reference is changed and saved' result='pending' />
+      </scenario>
+      <scenario name='user can not edit a reference that does not exist' result='pending' executionTime='2'>
+        <given name='app runs and command edit a reference is selected' result='success' />
+        <when name='a non-existing reference is given' result='success' />
+        <then name='an error-message is printed' result='pending' />
+      </scenario>
+      <scenario name='user can delete a reference' result='pending' executionTime='1'>
+        <given name='app runs and command delete a reference is selected' result='success' />
+        <when name='reference is given' result='success' />
+        <then name='the reference is deleted' result='pending' />
+      </scenario>
+      <scenario name='user can not delete a reference that doe not exist' result='pending' executionTime='2'>
+        <given name='app runs and command delete a reference is selected' result='success' />
+        <when name='a non-existing reference is given' result='success' />
+        <then name='an error-message is printed' result='pending' />
+      </scenario>
+    </story>
+    <story name='print_references' scenarios='1' failedscenarios='0' pendingscenarios='0' executionTime='44'>
+      <description name='User can read already created references' />
+      <scenario name='user can print references' result='success' executionTime='21'>
+        <given name='app runs' result='success' />
+        <when name='command print is selected' result='success' />
+        <then name='references are printed in a readable form for humans' result='success' />
       </scenario>
     </story>
   </stories>
