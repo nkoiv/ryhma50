@@ -1,13 +1,14 @@
 package ryhma50.data_access;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Scanner;
+import org.apache.commons.io.FileUtils;
 import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -22,6 +23,8 @@ import org.junit.Test;
 import references.Article;
 import references.Book;
 import references.EntryType;
+import ryhma50.io.IO;
+import ryhma50.io.StubIO;
 
 /**
  *
@@ -30,9 +33,15 @@ import references.EntryType;
 public class FileDAOTest {
 
     private HashMap<String, String> fields = new HashMap<>();
-    private StubDAO dao;
+    private DAO dao;
     private Scanner reader;
     private Book book = new Book();
+    private Article article = new Article();
+    private IO io = new StubIO("");
+    private FileWriter cleaner;
+    private String testFileForWrite = "src/test/resources/write_file_test.txt";
+    private String targerFileForWriteBook = "src/test/resources/write_file_book_target.txt";
+    private String targerFileForWriteArticle = "src/test/resources/write_file_article_target.txt";
 
     public FileDAOTest() {
     }
@@ -46,69 +55,94 @@ public class FileDAOTest {
     }
 
     @Before
-    public void setUp() throws FileNotFoundException {
-        book.addHeaderValue("author", "pentti");
-        book.addHeaderValue("title", "best book");
-        book.addHeaderValue("publisher", "yolo");
+    public void setUp() throws FileNotFoundException, IOException {
+        cleanWriteTestFile();
+        dao = new FileDAO(io);
+        book.addHeaderValue("author", "author");
+        book.addHeaderValue("title", "title");
+        book.addHeaderValue("publisher", "publisher");
         book.addHeaderValue("year", "2016");
-        book.addHeaderValue("key", "");
-        dao = new StubDAO();
-        reader = new Scanner(new File("src/test/resources/write_file_test.txt"));
+        book.addHeaderValue("note", "");
+        book.addHeaderValue("key", "key");
+
+        article.addHeaderValue("author", "author");
+        article.addHeaderValue("title", "title");
+        article.addHeaderValue("year", "2015");
+        article.addHeaderValue("journal", "journal");
+        article.addHeaderValue("volume", "volume");
+        article.addHeaderValue("key", "key");
+        article.addHeaderValue("note", "");
+
+        reader = new Scanner(new File(testFileForWrite));
     }
 
     @After
     public void tearDown() throws IOException {
-        FileWriter writer = new FileWriter(new File("src/test/resources/write_file_test.txt"));
-        writer.write(""); // tyhjentää tiedoston
-        writer.close();
+        cleanWriteTestFile();
     }
 
     @Test
-    public void testWritingBookReference() {
+    public void testWritingBookReferenceWithEmptyField() throws IOException {
+        cleanWriteTestFile();
+        book.setLatexFields(new HashMap<String, String>());
+        dao = new FileDAO(testFileForWrite, io);
         dao.add(book);
-        ArrayList<String> lines = new ArrayList<String>();
-        
-        while (reader.hasNextLine()) {
-            lines.add(reader.nextLine());
-        }
-        
-        assertTrue(lines.contains("@book{"));
-        assertTrue(lines.contains("title = {best book},"));
-    }
-
-    @Test
-    public void testWritingReferenceWithWrongType() {
-        dao.add(new Article());
-        File file = new File("src/test/resources/write_file_test.txt");
+        dao.closeWriting();
+        File file = new File(testFileForWrite);
         assertTrue(file.length() == 0);
     }
 
     @Test
-    public void testWritingBookReferenceWithEmptyField() {
-        book.setLatexFields(new HashMap<String, String>() );
-        dao.add(book);
-        File file = new File("src/test/resources/write_file_test.txt");
-        assertTrue(file.length() == 0);
-    }
-
-    @Test
-    public void testWritingBookReferenceWithNullField() {
+    public void testWritingBookReferenceWithNullField() throws IOException {
+        cleanWriteTestFile();
         book.setLatexFields(null);
+        dao = new FileDAO(testFileForWrite, io);
         dao.add(book);
-        File file = new File("src/test/resources/write_file_test.txt");
+        dao.closeWriting();
+        File file = new File(testFileForWrite);
         assertTrue(file.length() == 0);
     }
-    
+
     @Test
     public void methodListAllWorks() {
         assertTrue(dao.listAll().get(0).returnNecessaryHeaders().contains("publisher"));
     }
-    
-    @Test
-    public void addingBookToANonExistingFileDoesNotWork() {
 
-        File file = new File("src/test/resources/write_file_test.txt");
-        file.delete();
+    @Test
+    public void addBookWorks() throws IOException {
+        cleanWriteTestFile();
+        dao = new FileDAO(testFileForWrite, io);
         dao.add(book);
+        dao.closeWriting();
+        boolean filesMatch = FileUtils.contentEquals(new File(testFileForWrite), new File(targerFileForWriteBook));
+        assertTrue(filesMatch);
+    }
+
+    @Test
+    public void addArticleWorks() throws IOException {
+        cleanWriteTestFile();
+        dao = new FileDAO(testFileForWrite, io);
+        dao.add(article);
+        dao.closeWriting();
+        boolean filesMatch = FileUtils.contentEquals(new File(testFileForWrite), new File(targerFileForWriteArticle));
+        assertTrue(filesMatch);
+    }
+
+    @Test
+    public void printAllReferencesInEasyReadFormatWorks() throws IOException {
+        cleanWriteTestFile();
+        dao = new FileDAO(testFileForWrite, io);
+        dao.add(article);
+        dao.closeWriting();
+        List<String> testList = dao.printAllReferencesInEasyReadFormat();
+        assertTrue(testList.contains("article"));
+        assertTrue(testList.contains("title = title"));
+    }
+
+    private void cleanWriteTestFile() throws IOException {
+        cleaner = new FileWriter(new File(testFileForWrite));
+        cleaner.write(""); // tyhjentää tiedoston
+        cleaner.flush();
+        cleaner.close();
     }
 }

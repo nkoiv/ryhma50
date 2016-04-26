@@ -17,9 +17,9 @@ public class UserInterface {
     private IO io;
     private DAO dao;
 
-    public UserInterface(IO io) {
+    public UserInterface(IO io, DAO dao) {
         this.io = io;
-        this.dao = new FileDAO();
+        this.dao = dao;
     }
 
     public void run() {
@@ -27,6 +27,7 @@ public class UserInterface {
         while (true) {
             String command = io.readLine(">");
             if (command.isEmpty()) {
+                dao.closeWriting();
                 io.print("Until we meet again");
                 break;
             } else if (!validateCommand(command)) {
@@ -39,25 +40,23 @@ public class UserInterface {
     }
 
     private void printHelp() {
-//        System.out.println("First choose a command by typing 'add' or 'get' \n"
-//                + "Then choose an entry type by typing 'article', 'book' \n"
-//                + "Add-command will ask you to fill field types \n"
-//                + "and 'get' will print all the references.\n"
-//                + "Type nothing and press enter to exit.");
-        System.out.println("Add a reference by typing 'add'. \n"
-                + "Choose an entry type by typing 'book' or 'article' \n"
+        System.out.println("Add a reference by typing 'add' or "
+                + "print all excisting references by typing 'print'. \n"
+                + "For 'add'-command choose an entry type by typing 'book' or 'article' \n"
                 + "and fill the asked field types. \n"
                 + "Type nothing and press enter to exit.");
     }
 
     private void runCommand(String command) {
-        String entryType = io.readLine("Write entry type:");
-        if (!validateEntryType(entryType)) {
-            io.print("Invalid entry type");
-        } else if (command.equalsIgnoreCase("add")) {
-            runCommandAdd(entryType);
+        if (command.equalsIgnoreCase("print")) {
+            runCommandPrint();
         } else {
-            runCommandGet(entryType);
+            String entryType = io.readLine("Write entry type:");
+            if (!validateEntryType(entryType)) {
+                io.print("Invalid entry type");
+            } else if (command.equalsIgnoreCase("add")) {
+                runCommandAdd(entryType);
+            }
         }
     }
 
@@ -83,16 +82,12 @@ public class UserInterface {
         }
     }
 
-    private void runCommandGet(String entryType) {
-        if (entryType.equalsIgnoreCase("book")) {
-            //return list of book references
-        } else {
-            //return list of article references
-        }
+    private void runCommandPrint() {
+        dao.printAllReferencesInEasyReadFormat();
     }
 
     private boolean validateCommand(String command) {
-        return command.equalsIgnoreCase("add") || command.equalsIgnoreCase("get");
+        return command.equalsIgnoreCase("add") || command.equalsIgnoreCase("print");
     }
 
     private boolean validateEntryType(String entryType) {
@@ -119,8 +114,9 @@ public class UserInterface {
             String answer = io.readLine(header.toString() + "?");
             entry.addHeaderValue(header, answer);
         }
-        
+
         dao.add(entry);
+        io.print("New entry added");
     }
 
 }

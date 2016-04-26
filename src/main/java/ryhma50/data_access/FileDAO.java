@@ -1,6 +1,7 @@
 package ryhma50.data_access;
 
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 import references.Article;
 import references.Book;
 import references.EntryType;
+import ryhma50.io.IO;
 
 /**
  *
@@ -23,16 +25,21 @@ import references.EntryType;
  */
 public class FileDAO implements DAO {
 
-    private Scanner sc;
+    private Scanner scanner;
     private BufferedWriter writer;
+    private IO io;
     private HashMap<String, String> fields;
-    private final static String FILE = "BibTexFiles/bibtex.txt";
+    private final static String FILENAME = "BibTexFiles/bibtex.tex";
+    private String file;
     private EntryType entry;
 
-    public FileDAO() {
+    public FileDAO(String fileName, IO io) {
+        this.file = fileName;
+        this.io = io;
         try {
             try {
-                writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(FILE, true), "UTF-8"));
+                writer = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, true), "UTF-8"));
+
             } catch (UnsupportedEncodingException ex) {
                 Logger.getLogger(FileDAO.class.getName()).log(Level.SEVERE, null, ex);
                 System.exit(-1);
@@ -42,6 +49,10 @@ public class FileDAO implements DAO {
             Logger.getLogger(FileDAO.class.getName()).log(Level.SEVERE, null, ex);
             System.exit(-1);
         }
+    }
+
+    public FileDAO(IO io) {
+        this(FILENAME, io);
     }
 
     @Override
@@ -56,13 +67,12 @@ public class FileDAO implements DAO {
     public void add(EntryType entry) {
         this.entry = entry;
         if (entry.getLatexFields() == null || entry.getLatexFields().isEmpty()) {
-            System.out.println("Fields can't be empty or null");
+            io.print("Fields can't be empty or null");
         } else {
             if (entry instanceof Book) {
                 addBook();
             } else if (entry instanceof Article) {
                 addArticle();
-                System.out.println("Tarkistus");
             } else {
                 System.out.println("wtf");
             }
@@ -82,9 +92,8 @@ public class FileDAO implements DAO {
                     writer.write(s + " = {" + userInput + "},\n");
                 }
             }
-            writer.write("}\n");
+            writer.write("}\n\n");
             writer.flush();
-            writer.close();
         } catch (IOException ex) {
             System.exit(-1);
         }
@@ -93,13 +102,53 @@ public class FileDAO implements DAO {
     private void addArticle() {
         try {
             writer.write("@article{\n");
-            for (String s : fields.keySet()) {
-                String userInput = fields.get(s);
+            for (Object s : entry.returnAllHeaders()) {
+                String userInput = this.entry.getValueFromHeader((String) s);
                 if (!userInput.isEmpty()) {
                     writer.write(s + " = {" + userInput + "},\n");
                 }
             }
-            writer.write("}\n");
+            writer.write("}\n\n");
+            writer.flush();
+        } catch (IOException ex) {
+            System.out.println(ex.getMessage());
+            System.exit(-1);
+        }
+    }
+
+    @Override
+    public List<String> printAllReferencesInEasyReadFormat() {
+        scanner = createScanner();
+        List<String> list = new ArrayList<>();
+        while (scanner.hasNextLine()) {
+            String line = scanner.nextLine();
+            if (line.equals("}")) {
+                continue;
+            }
+            line = line.replace("@", "");
+            line = line.replace("{", "");
+            line = line.replace("}", "");
+            line = line.replace(",", "");
+            io.print(line);
+            list.add(line);
+        }
+        scanner.close();
+        return list;
+    }
+
+    private Scanner createScanner() {
+        try {
+            scanner = new Scanner(new File(file));
+        } catch (FileNotFoundException ex) {
+            System.out.println("Error " + ex);
+            System.exit(-1);
+        }
+        return scanner;
+    }
+
+    @Override
+    public void closeWriting() {
+        try {
             writer.flush();
             writer.close();
         } catch (IOException ex) {
@@ -107,4 +156,5 @@ public class FileDAO implements DAO {
             System.exit(-1);
         }
     }
+
 }

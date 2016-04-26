@@ -28,7 +28,7 @@ public class BookTest {
     private final String YEAR = "year";
     private final String AUTHOR = "author";
     private final String PUBLISHER = "publisher";
-    private final String TITLETARGET = "herra hanurin sikailut";
+    private final String TITLETARGET = "seikkailut";
     private final String YEARTARGET = "1993";
     private final String AUTHORTARGET = "loladin";
     private final String PUBLISHERTARGET = "Iso B";
@@ -71,7 +71,7 @@ public class BookTest {
         dataInput.put(YEAR, YEARTARGET);
         dataInput.put(PUBLISHER, PUBLISHERTARGET);
         dataInput.put(AUTHOR, AUTHORTARGET);
-        dataInput.put("ylimääräistä", "paskaa");
+        dataInput.put("ylimääräistä", "tekstiä");
         book.saveAll(dataInput);
         Map<String,String> dataOutput = book.getLatexFields();
         assertEquals("Väärä otsikko", TITLETARGET, dataOutput.get(TITLE));
@@ -99,5 +99,10 @@ public class BookTest {
         assertTrue(book.returnOptionalHeaders().contains("month"));
         assertTrue(book.returnOptionalHeaders().contains("note"));
         assertTrue(book.returnOptionalHeaders().contains("key"));
+    }
+    
+    @Test
+    public void getEntryTypeReturnsCorrectType() {
+        assertEquals("book", book.getEntryType());
     }
 }

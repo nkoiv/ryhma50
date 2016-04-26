@@ -14,8 +14,8 @@ public class Article extends EntryType {
      */
     public Article() {
         super();
-        addFieldsToArrayList(super.necessaryHeaders, JOURNAL);
-        addFieldsToArrayList(super.optionalHeaders, VOLUME, NUMBER, PAGES, MONTH, NOTE, KEY);
+        addFieldsToArrayList(super.necessaryHeaders, JOURNAL, VOLUME);
+        addFieldsToArrayList(super.optionalHeaders, NUMBER, PAGES, MONTH, NOTE, KEY);
     }
 
 //    @Override
