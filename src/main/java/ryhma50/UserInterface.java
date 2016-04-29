@@ -55,8 +55,15 @@ public class UserInterface {
     }
 
     private void runCommand(String command) {
-        String c = command.substring(0, command.indexOf(" "));
-        String args = command.substring(command.indexOf(" ")+1, command.length());
+        String c;
+        String args;
+        if (command.contains(" ")) {
+            c = command.substring(0, command.indexOf(" "));
+            args = command.substring(command.indexOf(" ")+1, command.length());
+        } else {
+            c = command;
+            args = "";
+        }
         if (this.commands.keySet().contains(c)) {
             Command com = this.commands.get(c);
             com.run(args);
