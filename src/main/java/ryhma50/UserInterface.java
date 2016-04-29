@@ -70,6 +70,5 @@ public class UserInterface {
         } else {
             System.out.println("Invalid command");
         }
-        
     }
 }
